@@ -1,12 +1,12 @@
-package com.tekcapsule.course.application.function;
+package com.tekcapzule.course.application.function;
 
-import com.tekcapsule.core.utils.HeaderUtil;
-import com.tekcapsule.core.utils.Outcome;
-import com.tekcapsule.core.utils.Stage;
-import com.tekcapsule.course.application.config.AppConfig;
-import com.tekcapsule.course.application.function.input.GetInput;
-import com.tekcapsule.course.domain.model.Course;
-import com.tekcapsule.course.domain.service.CourseService;
+import com.tekcapzule.core.utils.HeaderUtil;
+import com.tekcapzule.core.utils.Outcome;
+import com.tekcapzule.core.utils.Stage;
+import com.tekcapzule.course.application.config.AppConfig;
+import com.tekcapzule.course.application.function.input.GetInput;
+import com.tekcapzule.course.domain.model.Course;
+import com.tekcapzule.course.domain.service.CourseService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.support.GenericMessage;

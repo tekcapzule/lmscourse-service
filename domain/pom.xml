@@ -8,7 +8,7 @@
         <version>2.7.4</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.tekcapsule</groupId>
+    <groupId>com.tekcapzule</groupId>
     <artifactId>course-domain</artifactId>
     <version>1.0.4</version>
     <name>Course Domain</name>
@@ -27,8 +27,8 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>com.tekcapsule</groupId>
-            <artifactId>tekcapsule-core</artifactId>
+            <groupId>com.tekcapzule</groupId>
+            <artifactId>tekcapzule-core</artifactId>
             <version>1.0.2</version>
         </dependency>
         <dependency>
@@ -62,8 +62,8 @@
     <distributionManagement>
         <repository>
             <id>course</id>
-            <name>GitHub TekCapsule Apache Maven Packages</name>
-            <url>https://maven.pkg.github.com/tekcapsule/course-service</url>
+            <name>GitHub tekcapzule Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/tekcapzule/course-service</url>
         </repository>
     </distributionManagement>
 </project>

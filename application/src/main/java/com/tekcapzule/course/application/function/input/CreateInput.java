@@ -1,8 +1,8 @@
-package com.tekcapsule.course.application.function.input;
+package com.tekcapzule.course.application.function.input;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.tekcapsule.course.domain.model.*;
-import com.tekcapsule.course.domain.model.Module;
+import com.tekcapzule.course.domain.model.*;
+import com.tekcapzule.course.domain.model.Module;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

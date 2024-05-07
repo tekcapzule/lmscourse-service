@@ -1,8 +1,8 @@
-package com.tekcapsule.course.domain.command;
+package com.tekcapzule.course.domain.command;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.tekcapsule.core.domain.Command;
+import com.tekcapzule.core.domain.Command;
 import lombok.Builder;
 import lombok.Data;
 

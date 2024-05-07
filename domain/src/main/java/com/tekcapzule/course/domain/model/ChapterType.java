@@ -1,4 +1,4 @@
-package com.tekcapsule.course.domain.model;
+package com.tekcapzule.course.domain.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

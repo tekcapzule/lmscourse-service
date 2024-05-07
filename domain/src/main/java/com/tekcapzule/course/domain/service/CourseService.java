@@ -1,10 +1,10 @@
-package com.tekcapsule.course.domain.service;
+package com.tekcapzule.course.domain.service;
 
-import com.tekcapsule.course.domain.command.ApproveCommand;
-import com.tekcapsule.course.domain.command.CreateCommand;
-import com.tekcapsule.course.domain.command.RecommendCommand;
-import com.tekcapsule.course.domain.command.UpdateCommand;
-import com.tekcapsule.course.domain.model.Course;
+import com.tekcapzule.course.domain.command.ApproveCommand;
+import com.tekcapzule.course.domain.command.CreateCommand;
+import com.tekcapzule.course.domain.command.RecommendCommand;
+import com.tekcapzule.course.domain.command.UpdateCommand;
+import com.tekcapzule.course.domain.model.Course;
 import java.util.List;
 
 

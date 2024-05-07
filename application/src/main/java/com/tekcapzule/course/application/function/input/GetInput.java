@@ -1,4 +1,4 @@
-package com.tekcapsule.course.application.function.input;
+package com.tekcapzule.course.application.function.input;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;

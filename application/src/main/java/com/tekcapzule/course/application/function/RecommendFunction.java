@@ -1,15 +1,15 @@
-package com.tekcapsule.course.application.function;
+package com.tekcapzule.course.application.function;
 
-import com.tekcapsule.course.application.config.AppConfig;
-import com.tekcapsule.course.application.function.input.RecommendInput;
-import com.tekcapsule.course.application.mapper.InputOutputMapper;
-import com.tekcapsule.course.domain.command.RecommendCommand;
-import com.tekcapsule.course.domain.service.CourseService;
-import com.tekcapsule.core.domain.Origin;
-import com.tekcapsule.core.utils.HeaderUtil;
-import com.tekcapsule.core.utils.Outcome;
-import com.tekcapsule.core.utils.PayloadUtil;
-import com.tekcapsule.core.utils.Stage;
+import com.tekcapzule.course.application.config.AppConfig;
+import com.tekcapzule.course.application.function.input.RecommendInput;
+import com.tekcapzule.course.application.mapper.InputOutputMapper;
+import com.tekcapzule.course.domain.command.RecommendCommand;
+import com.tekcapzule.course.domain.service.CourseService;
+import com.tekcapzule.core.domain.Origin;
+import com.tekcapzule.core.utils.HeaderUtil;
+import com.tekcapzule.core.utils.Outcome;
+import com.tekcapzule.core.utils.PayloadUtil;
+import com.tekcapzule.core.utils.Stage;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.support.GenericMessage;

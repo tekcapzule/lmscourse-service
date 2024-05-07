@@ -1,16 +1,16 @@
-package com.tekcapsule.course.application.mapper;
+package com.tekcapzule.course.application.mapper;
 
-import com.tekcapsule.core.domain.Command;
-import com.tekcapsule.core.domain.ExecBy;
-import com.tekcapsule.core.domain.Origin;
-import com.tekcapsule.course.application.function.input.ApproveCourseInput;
-import com.tekcapsule.course.application.function.input.CreateInput;
-import com.tekcapsule.course.application.function.input.RecommendInput;
-import com.tekcapsule.course.application.function.input.UpdateInput;
-import com.tekcapsule.course.domain.command.ApproveCommand;
-import com.tekcapsule.course.domain.command.CreateCommand;
-import com.tekcapsule.course.domain.command.RecommendCommand;
-import com.tekcapsule.course.domain.command.UpdateCommand;
+import com.tekcapzule.core.domain.Command;
+import com.tekcapzule.core.domain.ExecBy;
+import com.tekcapzule.core.domain.Origin;
+import com.tekcapzule.course.application.function.input.ApproveCourseInput;
+import com.tekcapzule.course.application.function.input.CreateInput;
+import com.tekcapzule.course.application.function.input.RecommendInput;
+import com.tekcapzule.course.application.function.input.UpdateInput;
+import com.tekcapzule.course.domain.command.ApproveCommand;
+import com.tekcapzule.course.domain.command.CreateCommand;
+import com.tekcapzule.course.domain.command.RecommendCommand;
+import com.tekcapzule.course.domain.command.UpdateCommand;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 
