@@ -175,7 +175,7 @@ Resources:
         ApplyOn: PublishedVersions
       Policies:
         - DynamoDBCrudPolicy:
-            TableName: !Ref CourseTable
+            TableName: !Ref LMSCourseTable
       Environment:
         Variables:
           SPRING_CLOUD_FUNCTION_DEFINITION: getFunction
