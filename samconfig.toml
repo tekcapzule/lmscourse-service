@@ -1,0 +1,24 @@
+version = 0.1
+[dev]
+[dev.deploy]
+[dev.deploy.parameters]
+stack_name = "lmscourse-service"
+s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-bh548n5auhy3"
+s3_prefix = "lmscourse-service"
+region = "us-east-1"
+confirm_changeset = true
+capabilities = "CAPABILITY_IAM"
+parameter_overrides = "Stage=\"dev\""
+image_repositories = []
+
+[prod]
+[prod.deploy]
+[prod.deploy.parameters]
+stack_name = "prod-lmscourse-service"
+s3_bucket = "com.tekcapzule.api.deployment.prod"
+s3_prefix = "prod-lmscourse-service"
+region = "us-east-1"
+confirm_changeset = true
+capabilities = "CAPABILITY_IAM"
+parameter_overrides = "Stage=\"prod\" Environment=\"prod\""
+image_repositories = []
