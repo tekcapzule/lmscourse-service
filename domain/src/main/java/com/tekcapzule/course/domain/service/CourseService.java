@@ -4,7 +4,7 @@ import com.tekcapzule.course.domain.command.ApproveCommand;
 import com.tekcapzule.course.domain.command.CreateCommand;
 import com.tekcapzule.course.domain.command.RecommendCommand;
 import com.tekcapzule.course.domain.command.UpdateCommand;
-import com.tekcapzule.course.domain.model.Course;
+import com.tekcapzule.course.domain.model.LMSCourse;
 import java.util.List;
 
 
@@ -14,11 +14,11 @@ public interface CourseService {
 
     void update(UpdateCommand updateCommand);
 
-    List<Course> findAll();
+    List<LMSCourse> findAll();
 
-    List<Course> findAllByTopicCode(String code);
-    List<Course> findAllByDuration(String code, String duration);
-    List<Course> findAllByLevel(String code, String level);
+    List<LMSCourse> findAllByTopicCode(String code);
+    List<LMSCourse> findAllByDuration(String code, String duration);
+    List<LMSCourse> findAllByLevel(String code, String level);
     void recommend(RecommendCommand recommendCommand);
     void approve(ApproveCommand approveCommand);
 }

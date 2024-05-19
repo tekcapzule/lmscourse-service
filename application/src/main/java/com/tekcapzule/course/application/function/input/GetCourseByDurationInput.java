@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 @NoArgsConstructor
-public class GetInput {
+public class GetCourseByDurationInput {
     private String duration;
     private String topicCode;
 }

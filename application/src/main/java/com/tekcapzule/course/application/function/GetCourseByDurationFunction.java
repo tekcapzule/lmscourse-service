@@ -4,6 +4,7 @@ import com.tekcapzule.core.utils.HeaderUtil;
 import com.tekcapzule.core.utils.Outcome;
 import com.tekcapzule.core.utils.Stage;
 import com.tekcapzule.course.application.config.AppConfig;
+import com.tekcapzule.course.application.function.input.GetCourseByDurationInput;
 import com.tekcapzule.course.application.function.input.GetInput;
 import com.tekcapzule.course.domain.model.LMSCourse;
 import com.tekcapzule.course.domain.service.CourseService;
@@ -33,15 +34,15 @@ public class GetCourseByDurationFunction implements Function<Message<GetCourseBy
 
 
     @Override
-    public Message<List<Course>> apply(Message<GetCourseByDurationInput> getInputMessage) {
+    public Message<List<LMSCourse>> apply(Message<GetCourseByDurationInput> getInputMessage) {
 
         Map<String, Object> responseHeaders = new HashMap<>();
-        List<Course> courses = new ArrayList<>();
+        List<LMSCourse> courses = new ArrayList<>();
 
         String stage = appConfig.getStage().toUpperCase();
 
         try {
-            GetInput getInput = getInputMessage.getPayload();
+            GetCourseByDurationInput getInput = getInputMessage.getPayload();
             log.info(String.format("Entering get course by Duration Function -Duration :%s", getInput.getDuration()));
             courses = courseService.findAllByDuration(getInput.getTopicCode(), getInput.getDuration());
             if (courses.isEmpty()) {

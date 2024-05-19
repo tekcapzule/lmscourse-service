@@ -1,14 +1,14 @@
 package com.tekcapzule.course.domain.repository;
 
 import com.tekcapzule.core.domain.CrudRepository;
-import com.tekcapzule.course.domain.model.Course;
+import com.tekcapzule.course.domain.model.LMSCourse;
 
 import java.util.List;
 
-public interface CourseDynamoRepository extends CrudRepository<Course, String> {
+public interface CourseDynamoRepository extends CrudRepository<LMSCourse, String> {
 
-    List<Course> findAllByTopicCode(String topicCode);
-    List<Course> findAllByDuration(topicCode, duration);
-    List<Course> findAllByLevel(topicCode, level);
+    List<LMSCourse> findAllByTopicCode(String topicCode);
+    List<LMSCourse> findAllByDuration(String topicCode, String duration);
+    List<LMSCourse> findAllByLevel(String topicCode, String level);
 
 }

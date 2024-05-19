@@ -4,10 +4,11 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBQueryExpression;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBScanExpression;
 import com.amazonaws.services.dynamodbv2.model.AttributeValue;
-import com.tekcapzule.course.domain.model.Course;
+import com.tekcapzule.course.domain.model.LMSCourse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import com.tekcapzule.course.domain.repository.CourseDynamoRepository;
 
 import java.util.HashMap;
 import java.util.List;
@@ -25,13 +26,13 @@ public class CourseRepositoryImpl implements CourseDynamoRepository {
     }
 
     @Override
-    public List<Course> findAll() {
+    public List<LMSCourse> findAll() {
 
-        return dynamo.scan(Course.class,new DynamoDBScanExpression());
+        return dynamo.scan(LMSCourse.class,new DynamoDBScanExpression());
     }
 
     @Override
-    public List<Course> findAllByTopicCode(String topicCode) {
+    public List<LMSCourse> findAllByTopicCode(String topicCode) {
 
         HashMap<String, AttributeValue> expAttributes = new HashMap<>();
         expAttributes.put(":status", new AttributeValue().withS(ACTIVE_STATUS));
@@ -42,18 +43,18 @@ public class CourseRepositoryImpl implements CourseDynamoRepository {
         expNames.put("#topicCode", "topicCode");
 
 
-        DynamoDBQueryExpression<Course> queryExpression = new DynamoDBQueryExpression<Course>()
+        DynamoDBQueryExpression<LMSCourse> queryExpression = new DynamoDBQueryExpression<LMSCourse>()
                 .withIndexName("topicGSI").withConsistentRead(false)
                 .withKeyConditionExpression("#status = :status and #topicCode = :topicCode")
                 .withExpressionAttributeValues(expAttributes)
                 .withExpressionAttributeNames(expNames);
 
-        return dynamo.query(Course.class, queryExpression);
+        return dynamo.query(LMSCourse.class, queryExpression);
 
     }
 
     @Override
-    public List<Course> findAllByDuration(topicCode, duration) {
+    public List<LMSCourse> findAllByDuration(String topicCode, String duration) {
 
         HashMap<String, AttributeValue> expAttributes = new HashMap<>();
         expAttributes.put(":topicCode", new AttributeValue().withS(topicCode));
@@ -64,16 +65,16 @@ public class CourseRepositoryImpl implements CourseDynamoRepository {
         expNames.put("#topicCode", "topicCode");
 
 
-        DynamoDBQueryExpression<Course> queryExpression = new DynamoDBQueryExpression<Course>()
+        DynamoDBQueryExpression<LMSCourse> queryExpression = new DynamoDBQueryExpression<LMSCourse>()
                 .withIndexName("durationGSI").withConsistentRead(false)
                 .withKeyConditionExpression("#duration = :duration and #topicCode = :topicCode")
                 .withExpressionAttributeValues(expAttributes)
                 .withExpressionAttributeNames(expNames);
 
-        return dynamo.query(Course.class, queryExpression);
+        return dynamo.query(LMSCourse.class, queryExpression);
     }
     @Override
-    public List<Course> findAllByLevel(topicCode, level) {
+    public List<LMSCourse> findAllByLevel(String topicCode, String level) {
 
         HashMap<String, AttributeValue> expAttributes = new HashMap<>();
         expAttributes.put(":level", new AttributeValue().withS(level));
@@ -84,23 +85,23 @@ public class CourseRepositoryImpl implements CourseDynamoRepository {
         expNames.put("#topicCode", "topicCode");
 
 
-        DynamoDBQueryExpression<Course> queryExpression = new DynamoDBQueryExpression<Course>()
+        DynamoDBQueryExpression<LMSCourse> queryExpression = new DynamoDBQueryExpression<LMSCourse>()
                 .withIndexName("levelGSI").withConsistentRead(false)
                 .withKeyConditionExpression("#level = :level and #topicCode = :topicCode")
                 .withExpressionAttributeValues(expAttributes)
                 .withExpressionAttributeNames(expNames);
 
-        return dynamo.query(Course.class, queryExpression);
+        return dynamo.query(LMSCourse.class, queryExpression);
 
     }
 
     @Override
-    public Course findBy(String code) {
-        return dynamo.load(Course.class, code);
+    public LMSCourse findBy(String code) {
+        return dynamo.load(LMSCourse.class, code);
     }
 
     @Override
-    public Course save(Course course) {
+    public LMSCourse save(LMSCourse course) {
         dynamo.save(course);
         return course;
     }

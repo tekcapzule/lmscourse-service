@@ -4,7 +4,7 @@ import com.tekcapzule.course.domain.command.ApproveCommand;
 import com.tekcapzule.course.domain.command.CreateCommand;
 import com.tekcapzule.course.domain.command.RecommendCommand;
 import com.tekcapzule.course.domain.command.UpdateCommand;
-import com.tekcapzule.course.domain.model.Course;
+import com.tekcapzule.course.domain.model.LMSCourse;
 import com.tekcapzule.course.domain.model.Status;
 import com.tekcapzule.course.domain.repository.CourseDynamoRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -27,7 +27,7 @@ public class CourseServiceImpl implements CourseService {
 
         log.info(String.format("Entering create course service - Module Code :%s", createCommand.getTopicCode()));
 
-        Course course = Course.builder()
+        LMSCourse course = LMSCourse.builder()
                 .title(createCommand.getTitle())
                 .topicCode(createCommand.getTopicCode())
                 .author(createCommand.getAuthor())
@@ -40,7 +40,7 @@ public class CourseServiceImpl implements CourseService {
                 .prizingModel(createCommand.getPrizingModel())
                 .deliveryMode(createCommand.getDeliveryMode())
                 .learningMode(createCommand.getLearningMode())
-                .imageUrl(createCommand.getImageUrl())
+                .coverImageUrl(createCommand.getImageUrl())
                 .promotion(createCommand.getPromotion())
                 .status(Status.SUBMITTED)
                 .recommendations(createCommand.getRecommendations())
@@ -58,7 +58,7 @@ public class CourseServiceImpl implements CourseService {
 
         log.info(String.format("Entering update course service - Course ID:%s", updateCommand.getCourseId()));
 
-        Course course = courseDynamoRepository.findBy(updateCommand.getCourseId());
+        LMSCourse course = courseDynamoRepository.findBy(updateCommand.getCourseId());
         if (course != null) {
             course.setTitle(updateCommand.getTitle());
             course.setTopicCode(updateCommand.getTopicCode());
@@ -73,7 +73,7 @@ public class CourseServiceImpl implements CourseService {
             course.setDeliveryMode(updateCommand.getDeliveryMode());
             course.setLearningMode(updateCommand.getLearningMode());
             course.setPromotion(updateCommand.getPromotion());
-            course.setImageUrl(updateCommand.getImageUrl());
+            course.setCoverImageUrl(updateCommand.getImageUrl());
             course.setUpdatedOn(updateCommand.getExecOn());
             course.setUpdatedBy(updateCommand.getExecBy().getUserId());
             course.setRecommendations(updateCommand.getRecommendations());
@@ -86,7 +86,7 @@ public class CourseServiceImpl implements CourseService {
     public void recommend(RecommendCommand recommendCommand) {
         log.info(String.format("Entering recommend course service -  Course Id:%s", recommendCommand.getCourseId()));
 
-        Course course = courseDynamoRepository.findBy(recommendCommand.getCourseId());
+        LMSCourse course = courseDynamoRepository.findBy(recommendCommand.getCourseId());
         if (course != null) {
             Integer recommendationsCount = course.getRecommendations();
             recommendationsCount += 1;
@@ -103,7 +103,7 @@ public class CourseServiceImpl implements CourseService {
     public void approve(ApproveCommand approveCommand) {
         log.info(String.format("Entering approve course service -  course Id:%s", approveCommand.getCourseId()));
 
-        Course course = courseDynamoRepository.findBy(approveCommand.getCourseId());
+        LMSCourse course = courseDynamoRepository.findBy(approveCommand.getCourseId());
         if (course != null) {
             course.setStatus(Status.ACTIVE);
 
@@ -130,7 +130,7 @@ public class CourseServiceImpl implements CourseService {
     }*/
 
     @Override
-    public List<Course> findAll() {
+    public List<LMSCourse> findAll() {
 
         log.info("Entering findAll Course service");
 
@@ -138,21 +138,21 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
-    public List<Course> findAllByTopicCode(String topicCode) {
+    public List<LMSCourse> findAllByTopicCode(String topicCode) {
 
         log.info(String.format("Entering findAllByTopicCode Course service - Module code:%s", topicCode));
 
         return courseDynamoRepository.findAllByTopicCode(topicCode);
     }
     @Override
-    public List<Course> findAllByDuration(String topicCode, String duration) {
+    public List<LMSCourse> findAllByDuration(String topicCode, String duration) {
 
         log.info(String.format("Entering findAllByDuration Course service - Module code:%s", topicCode));
 
         return courseDynamoRepository.findAllByDuration(topicCode, duration);
     }
     @Override
-    public List<Course> findAllByLevel(String topicCode, String level) {
+    public List<LMSCourse> findAllByLevel(String topicCode, String level) {
 
         log.info(String.format("Entering findAllByLevel Course service - Module code:%s", topicCode));
 

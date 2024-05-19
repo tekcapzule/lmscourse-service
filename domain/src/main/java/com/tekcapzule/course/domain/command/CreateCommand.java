@@ -6,11 +6,13 @@ import com.tekcapzule.course.domain.model.*;
 import com.tekcapzule.course.domain.model.Module;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.util.List;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
+@EqualsAndHashCode(callSuper = false)
 @Builder
 public class CreateCommand extends Command {
     private String title;

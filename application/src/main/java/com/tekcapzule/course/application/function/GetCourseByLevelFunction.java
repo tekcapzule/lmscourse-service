@@ -4,8 +4,8 @@ import com.tekcapzule.core.utils.HeaderUtil;
 import com.tekcapzule.core.utils.Outcome;
 import com.tekcapzule.core.utils.Stage;
 import com.tekcapzule.course.application.config.AppConfig;
-import com.tekcapzule.course.application.function.input.GetInput;
-import com.tekcapzule.course.domain.model.Course;
+import com.tekcapzule.course.application.function.input.GetCourseByLevelInput;
+import com.tekcapzule.course.domain.model.LMSCourse;
 import com.tekcapzule.course.domain.service.CourseService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.messaging.Message;
@@ -26,17 +26,17 @@ public class GetCourseByLevelFunction implements Function<Message<GetCourseByLev
 
     private final AppConfig appConfig;
 
-    public GetFunction(final CourseService courseService, final AppConfig appConfig) {
+    public GetCourseByLevelFunction(final CourseService courseService, final AppConfig appConfig) {
         this.courseService = courseService;
         this.appConfig = appConfig;
     }
 
 
     @Override
-    public Message<List<Course>> apply(Message<GetCourseByLevelInput> getInputMessage) {
+    public Message<List<LMSCourse>> apply(Message<GetCourseByLevelInput> getInputMessage) {
 
         Map<String, Object> responseHeaders = new HashMap<>();
-        List<Course> courses = new ArrayList<>();
+        List<LMSCourse> courses = new ArrayList<>();
 
         String stage = appConfig.getStage().toUpperCase();
 

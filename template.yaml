@@ -17,7 +17,7 @@ Globals:
     Timeout: 20
     AutoPublishAlias: !Ref Stage
     Handler: org.springframework.cloud.function.adapter.aws.FunctionInvoker
-    CodeUri: ./application
+    CodeUri: ./application/target
     Tags:
       Stage: !Ref Stage
       Service: LMSCourse
@@ -53,7 +53,7 @@ Resources:
   LMSCourseTable:
     Type: AWS::DynamoDB::Table
     Properties:
-      TableName: !Sub "${Stage}Course"
+      TableName: !Sub "${Stage}LMSCourse"
       AttributeDefinitions:
         - AttributeName: courseId
           AttributeType: S
@@ -128,7 +128,7 @@ Resources:
   CreateCourseFunction:
     Type: AWS::Serverless::Function
     Properties:
-      FunctionName: !Sub "${Stage}-Course-CreateCourse"
+      FunctionName: !Sub "${Stage}-LMSCourse-CreateCourse"
       SnapStart:
         ApplyOn: PublishedVersions
       Policies:
@@ -141,7 +141,7 @@ Resources:
         ApiEvent:
           Type: Api
           Properties:
-            Path: course/create
+            Path: lmscourse/create
             Method: post
             RestApiId:
               Ref: LMSCourseApi
@@ -149,7 +149,7 @@ Resources:
   UpdateCourseFunction:
     Type: AWS::Serverless::Function
     Properties:
-      FunctionName: !Sub "${Stage}-Course-UpdateCourse"
+      FunctionName: !Sub "${Stage}-LMSCourse-UpdateCourse"
       SnapStart:
         ApplyOn: PublishedVersions
       Policies:
@@ -162,7 +162,7 @@ Resources:
         ApiEvent:
           Type: Api
           Properties:
-            Path: course/update
+            Path: lmscourse/update
             Method: post
             RestApiId:
               Ref: LMSCourseApi
@@ -170,7 +170,7 @@ Resources:
   GetCourseFunction:
     Type: AWS::Serverless::Function
     Properties:
-      FunctionName: !Sub "${Stage}-Course-GetCourse"
+      FunctionName: !Sub "${Stage}-LMSCourse-GetCourse"
       SnapStart:
         ApplyOn: PublishedVersions
       Policies:
@@ -183,7 +183,7 @@ Resources:
         ApiEvent:
           Type: Api
           Properties:
-            Path: course/get
+            Path: lmscourse/get
             Method: post
             RestApiId:
               Ref: LMSCourseApi
@@ -191,7 +191,7 @@ Resources:
   GetAllCoursesFunction:
     Type: AWS::Serverless::Function
     Properties:
-      FunctionName: !Sub "${Stage}-Course-GetAllCourses"
+      FunctionName: !Sub "${Stage}-LMSCourse-GetAllCourses"
       SnapStart:
         ApplyOn: PublishedVersions
       Policies:
@@ -204,7 +204,7 @@ Resources:
         ApiEvent:
           Type: Api
           Properties:
-            Path: course/getAll
+            Path: lmscourse/getAll
             Method: post
             RestApiId:
               Ref: LMSCourseApi
@@ -212,7 +212,7 @@ Resources:
   RecommendCourseFunction:
     Type: AWS::Serverless::Function
     Properties:
-      FunctionName: !Sub "${Stage}-Course-RecommendCourse"
+      FunctionName: !Sub "${Stage}-LMSCourse-RecommendCourse"
       SnapStart:
         ApplyOn: PublishedVersions
       Policies:
@@ -225,7 +225,7 @@ Resources:
         ApiEvent:
           Type: Api
           Properties:
-            Path: course/recommend
+            Path: lmscourse/recommend
             Method: post
             RestApiId:
               Ref: LMSCourseApi
@@ -233,7 +233,7 @@ Resources:
   ApproveCourseFunction:
     Type: AWS::Serverless::Function
     Properties:
-      FunctionName: !Sub "${Stage}-Course-ApproveCourse"
+      FunctionName: !Sub "${Stage}-LMSCourse-ApproveCourse"
       SnapStart:
         ApplyOn: PublishedVersions
       Policies:
@@ -246,7 +246,49 @@ Resources:
         ApiEvent:
           Type: Api
           Properties:
-            Path: course/approve
+            Path: lmscourse/approve
+            Method: post
+            RestApiId:
+              Ref: LMSCourseApi
+
+  GetCourseByDurationFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub "${Stage}-LMSCourse-GetCourseByDuration"
+      SnapStart:
+        ApplyOn: PublishedVersions
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref LMSCourseTable
+      Environment:
+        Variables:
+          SPRING_CLOUD_FUNCTION_DEFINITION: getByDurationFunction
+      Events:
+        ApiEvent:
+          Type: Api
+          Properties:
+            Path: lmscourse/getByDuration
+            Method: post
+            RestApiId:
+              Ref: LMSCourseApi
+
+  GetCourseByLevelFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub "${Stage}-LMSCourse-GetCourseByLevel"
+      SnapStart:
+        ApplyOn: PublishedVersions
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref LMSCourseTable
+      Environment:
+        Variables:
+          SPRING_CLOUD_FUNCTION_DEFINITION: getByLevelFunction
+      Events:
+        ApiEvent:
+          Type: Api
+          Properties:
+            Path: lmscourse/getByLevel
             Method: post
             RestApiId:
               Ref: LMSCourseApi

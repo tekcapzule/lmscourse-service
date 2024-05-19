@@ -17,7 +17,6 @@ public class Chapter {
     private String coverImageUrl;
     private String startDate;
     private String endDate;
-    private String startDate;
     private ChapterType chapterType;
 
 }

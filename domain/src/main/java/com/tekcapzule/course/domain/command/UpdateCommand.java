@@ -6,10 +6,12 @@ import com.tekcapzule.course.domain.model.*;
 import com.tekcapzule.course.domain.model.Module;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.util.List;
 
 @Data
+@EqualsAndHashCode(callSuper = false)
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Builder
 public class UpdateCommand extends Command {
