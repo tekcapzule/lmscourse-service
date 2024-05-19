@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.tekcapzule</groupId>
     <artifactId>lmscourse-domain</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <name>LMSCourse Domain</name>
     <description>LMSCourse Domain</description>
     <properties>

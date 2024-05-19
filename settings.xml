@@ -18,7 +18,7 @@
                     </snapshots>
                 </repository>
                 <repository>
-                    <id>lmscourse-service</id>
+                    <id>lmscourse</id>
                     <url>https://maven.pkg.github.com/tekcapzule/lmscourse-service</url>
                     <snapshots>
                         <enabled>true</enabled>
@@ -34,7 +34,7 @@
 
     <servers>
         <server>
-            <id>lmscourse-service</id>
+            <id>lmscourse</id>
             <username>${env.SERVER_USERNAME}</username>
             <password>${env.SERVER_PASSWORD}</password>
         </server>
