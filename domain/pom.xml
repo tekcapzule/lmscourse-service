@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.tekcapzule</groupId>
-    <artifactId>course-domain</artifactId>
+    <artifactId>lmscourse-domain</artifactId>
     <version>1.0.4</version>
-    <name>Course Domain</name>
-    <description>Course Domain</description>
+    <name>LMSCourse Domain</name>
+    <description>LMSCourse Domain</description>
     <properties>
         <java.version>11</java.version>
     </properties>
@@ -61,9 +61,9 @@
     </dependencyManagement>
     <distributionManagement>
         <repository>
-            <id>course</id>
+            <id>lmscourse</id>
             <name>GitHub tekcapzule Apache Maven Packages</name>
-            <url>https://maven.pkg.github.com/tekcapzule/course-service</url>
+            <url>https://maven.pkg.github.com/tekcapzule/lmscourse-service</url>
         </repository>
     </distributionManagement>
 </project>

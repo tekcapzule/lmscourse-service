@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.tekcapzule</groupId>
-    <artifactId>course-service</artifactId>
+    <artifactId>lmscourse-service</artifactId>
     <version>1.0.4</version>
-    <name>Course Service</name>
-    <description>Course Service</description>
+    <name>LMSCourse Service</name>
+    <description>LMSCourse Service</description>
     <properties>
         <java.version>11</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -53,7 +53,7 @@
         </dependency>
         <dependency>
             <groupId>com.tekcapzule</groupId>
-            <artifactId>course-domain</artifactId>
+            <artifactId>lmscourse-domain</artifactId>
             <version>1.0.4</version>
         </dependency>
         <dependency>
@@ -115,9 +115,9 @@
     </build>
     <distributionManagement>
         <repository>
-            <id>course</id>
+            <id>lmscourse</id>
             <name>GitHub TekCapzule Apache Maven Packages</name>
-            <url>https://maven.pkg.github.com/tekcapzule/course-service</url>
+            <url>https://maven.pkg.github.com/tekcapzule/lmscourse-service</url>
         </repository>
     </distributionManagement>
 </project>

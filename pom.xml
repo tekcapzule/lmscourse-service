@@ -4,11 +4,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.tekcapzule</groupId>
-    <artifactId>course-application</artifactId>
+    <artifactId>lmscourse-application</artifactId>
     <version>1.0.4</version>
     <packaging>pom</packaging>
-    <name>Course Application</name>
-    <description>Course Application</description>
+    <name>LMSCourse Application</name>
+    <description>LMSCourse Application</description>
     <properties>
         <sonar.organization>tekcapzule</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
@@ -29,9 +29,9 @@
     </build>
     <distributionManagement>
         <repository>
-            <id>course</id>
+            <id>lmscourse</id>
             <name>GitHub tekcapzule Apache Maven Packages</name>
-            <url>https://maven.pkg.github.com/tekcapzule/course-service</url>
+            <url>https://maven.pkg.github.com/tekcapzule/lmscourse-service</url>
         </repository>
     </distributionManagement>
 </project>
