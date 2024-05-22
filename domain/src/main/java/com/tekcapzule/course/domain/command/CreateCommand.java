@@ -28,9 +28,9 @@ public class CreateCommand extends Command {
     private DeliveryMode deliveryMode;
     private LearningMode learningMode;
     private String imageUrl;
-
+    private boolean earnBadge;
+    private boolean earnCertificate;
     private int recommendations;
-
     private Promotion promotion;
     private String publishedOn;
 

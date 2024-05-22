@@ -19,6 +19,5 @@ public class Module {
     private int duration;
     private String name;
     private String coverImageUrl;
-    @DynamoDBAttribute(attributeName = "chapters")
     private List<Chapter> chapters;
 }

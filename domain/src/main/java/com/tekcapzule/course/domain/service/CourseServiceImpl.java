@@ -42,6 +42,8 @@ public class CourseServiceImpl implements CourseService {
                 .learningMode(createCommand.getLearningMode())
                 .coverImageUrl(createCommand.getImageUrl())
                 .promotion(createCommand.getPromotion())
+                .earnBadge(createCommand.isEarnBadge())
+                .earnCertification(createCommand.isEarnCertificate())
                 .status(Status.SUBMITTED)
                 .recommendations(createCommand.getRecommendations())
                 .publishedOn(createCommand.getPublishedOn())
@@ -72,6 +74,8 @@ public class CourseServiceImpl implements CourseService {
             course.setPrizingModel(updateCommand.getPrizingModel());
             course.setDeliveryMode(updateCommand.getDeliveryMode());
             course.setLearningMode(updateCommand.getLearningMode());
+            course.setEarnBadge(updateCommand.isEarnBadge());
+            course.setEarnCertification(updateCommand.isEarnCertificate());
             course.setPromotion(updateCommand.getPromotion());
             course.setCoverImageUrl(updateCommand.getImageUrl());
             course.setUpdatedOn(updateCommand.getExecOn());

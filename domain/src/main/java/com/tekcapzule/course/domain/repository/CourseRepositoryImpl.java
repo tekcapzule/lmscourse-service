@@ -96,8 +96,8 @@ public class CourseRepositoryImpl implements CourseDynamoRepository {
     }
 
     @Override
-    public LMSCourse findBy(String code) {
-        return dynamo.load(LMSCourse.class, code);
+    public LMSCourse findBy(String courseId) {
+        return dynamo.load(LMSCourse.class, courseId);
     }
 
     @Override
