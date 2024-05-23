@@ -11,7 +11,7 @@ import lombok.*;
 @NoArgsConstructor
 @DynamoDBDocument
 public class Promotion {
-    private boolean promoted;
+    private Boolean promoted;
     private String endsOnUtc;
     private String imageUrl;
     private String campaignUrl;

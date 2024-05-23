@@ -32,7 +32,7 @@ public class UpdateCommand extends Command {
     private int recommendations;
     private Promotion promotion;
     private String publishedOn;
-    private boolean earnBadge;
-    private boolean earnCertificate;
+    private Boolean earnBadge;
+    private Boolean earnCertificate;
 
 }
