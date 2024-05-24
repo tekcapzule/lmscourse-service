@@ -59,8 +59,6 @@ Resources:
           AttributeType: S
         - AttributeName: topicCode
           AttributeType: S
-        - AttributeName: publishedOn
-          AttributeType: S
         - AttributeName: status
           AttributeType: S
         - AttributeName: recommendations
