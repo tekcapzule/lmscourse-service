@@ -90,17 +90,24 @@ public class CourseServiceImpl implements CourseService {
     public void recommend(RecommendCommand recommendCommand) {
         log.info(String.format("Entering recommend course service -  Course Id:%s", recommendCommand.getCourseId()));
 
-        LMSCourse course = courseDynamoRepository.findBy(recommendCommand.getCourseId());
-        if (course != null) {
-            Integer recommendationsCount = course.getRecommendations();
-            recommendationsCount += 1;
-            course.setRecommendations(recommendationsCount);
+        try {
+            LMSCourse course = courseDynamoRepository.findBy(recommendCommand.getCourseId());
+            if (course != null) {
+                Integer recommendationsCount = course.getRecommendations();
+                recommendationsCount += 1;
+                course.setRecommendations(recommendationsCount);
 
-            course.setUpdatedOn(recommendCommand.getExecOn());
-            course.setUpdatedBy(recommendCommand.getExecBy().getUserId());
+                course.setUpdatedOn(recommendCommand.getExecOn());
+                course.setUpdatedBy(recommendCommand.getExecBy().getUserId());
 
-            courseDynamoRepository.save(course);
+                courseDynamoRepository.save(course);
+            }
+
+        } catch(Exception e) {
+            e.printStackTrace();
+            log.error(e.getMessage());
         }
+
     }
 
     @Override

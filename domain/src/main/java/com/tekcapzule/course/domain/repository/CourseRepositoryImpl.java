@@ -8,7 +8,6 @@ import com.tekcapzule.course.domain.model.LMSCourse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import com.tekcapzule.course.domain.repository.CourseDynamoRepository;
 
 import java.util.HashMap;
 import java.util.List;
