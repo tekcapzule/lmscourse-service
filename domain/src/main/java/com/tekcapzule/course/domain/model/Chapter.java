@@ -1,6 +1,8 @@
 package com.tekcapzule.course.domain.model;
 
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBDocument;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTypeConvertedEnum;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
@@ -17,6 +19,8 @@ public class Chapter {
     private String coverImageUrl;
     private String startDate;
     private String endDate;
+    @DynamoDBAttribute(attributeName = "chapterType")
+    @DynamoDBTypeConvertedEnum
     private ChapterType chapterType;
 
 }

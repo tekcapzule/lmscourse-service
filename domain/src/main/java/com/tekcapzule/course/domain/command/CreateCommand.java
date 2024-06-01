@@ -27,10 +27,13 @@ public class CreateCommand extends Command {
     private PrizingModel prizingModel;
     private DeliveryMode deliveryMode;
     private LearningMode learningMode;
-    private String imageUrl;
-    private Boolean earnBadge;
-    private Boolean earnCertificate;
+    private String coverImageUrl;
+    private boolean earnBadge;
+    private boolean earnCertificate;
     private int recommendations;
+    private int points;
+    private Type type;
+    private Level level;
     private Promotion promotion;
     private String publishedOn;
 

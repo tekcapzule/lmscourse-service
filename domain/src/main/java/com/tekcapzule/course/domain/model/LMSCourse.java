@@ -2,6 +2,7 @@ package com.tekcapzule.course.domain.model;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.*;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.tekcapzule.core.domain.AggregateRoot;
 import com.tekcapzule.core.domain.BaseDomainEntity;
 import lombok.*;
@@ -66,10 +67,12 @@ public class LMSCourse extends BaseDomainEntity implements AggregateRoot {
     private int courseRating;
     @DynamoDBAttribute(attributeName = "points")
     private int points;
-    @DynamoDBAttribute(attributeName = "earnBadge")
-    private Boolean earnBadge;
-    @DynamoDBAttribute(attributeName = "earnCertification")
-    private Boolean earnCertification;
+    @DynamoDBAttribute(attributeName = "isEarnBadge")
+    @JsonProperty("earnBadge")
+    private boolean earnBadge;
+    @DynamoDBAttribute(attributeName = "isEarnCertification")
+    @JsonProperty("earnCertification")
+    private boolean earnCertification;
     @DynamoDBAttribute(attributeName = "publishedOn")
     private String publishedOn;
 
