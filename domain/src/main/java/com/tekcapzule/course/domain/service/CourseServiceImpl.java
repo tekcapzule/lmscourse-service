@@ -5,7 +5,9 @@ import com.tekcapzule.course.domain.command.CreateCommand;
 import com.tekcapzule.course.domain.command.RecommendCommand;
 import com.tekcapzule.course.domain.command.UpdateCommand;
 import com.tekcapzule.course.domain.model.LMSCourse;
+import com.tekcapzule.course.domain.model.Level;
 import com.tekcapzule.course.domain.model.Status;
+import com.tekcapzule.course.domain.model.Type;
 import com.tekcapzule.course.domain.repository.CourseDynamoRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,9 +46,9 @@ public class CourseServiceImpl implements CourseService {
                 .points(createCommand.getPoints())
                 .promotion(createCommand.getPromotion())
                 .earnBadge(createCommand.isEarnBadge())
-                .earnCertification(createCommand.isEarnCertificate())
-                .type(createCommand.getType())
-                .level(createCommand.getLevel())
+                .earnCertification(createCommand.isEarnCertification())
+                .type(Enum.valueOf(Type.class,createCommand.getType()))
+                .level(Enum.valueOf(Level.class,createCommand.getLevel()))
                 .status(Status.SUBMITTED)
                 .recommendations(createCommand.getRecommendations())
                 .publishedOn(createCommand.getPublishedOn())
@@ -78,7 +80,7 @@ public class CourseServiceImpl implements CourseService {
             course.setDeliveryMode(updateCommand.getDeliveryMode());
             course.setLearningMode(updateCommand.getLearningMode());
             course.setEarnBadge(updateCommand.isEarnBadge());
-            course.setEarnCertification(updateCommand.isEarnCertificate());
+            course.setEarnCertification(updateCommand.isEarnCertification());
             course.setPromotion(updateCommand.getPromotion());
             course.setCoverImageUrl(updateCommand.getCoverImageUrl());
             course.setUpdatedOn(updateCommand.getExecOn());
@@ -87,8 +89,8 @@ public class CourseServiceImpl implements CourseService {
             course.setPublishedOn(updateCommand.getPublishedOn());
             course.setPoints(updateCommand.getPoints());
             course.setCourseRating(updateCommand.getCourseRating());
-            course.setType(updateCommand.getType());
-            course.setLevel(updateCommand.getLevel());
+            course.setType(Enum.valueOf(Type.class,updateCommand.getType()));
+            course.setLevel(Enum.valueOf(Level.class,updateCommand.getLevel()));
             courseDynamoRepository.save(course);
         }
     }

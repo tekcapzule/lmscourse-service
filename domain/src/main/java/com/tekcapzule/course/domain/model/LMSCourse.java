@@ -67,11 +67,9 @@ public class LMSCourse extends BaseDomainEntity implements AggregateRoot {
     private int courseRating;
     @DynamoDBAttribute(attributeName = "points")
     private int points;
-    @DynamoDBAttribute(attributeName = "isEarnBadge")
-    @JsonProperty("earnBadge")
+    @DynamoDBAttribute(attributeName = "earnBadge")
     private boolean earnBadge;
-    @DynamoDBAttribute(attributeName = "isEarnCertification")
-    @JsonProperty("earnCertification")
+    @DynamoDBAttribute(attributeName = "earnCertification")
     private boolean earnCertification;
     @DynamoDBAttribute(attributeName = "publishedOn")
     private String publishedOn;
