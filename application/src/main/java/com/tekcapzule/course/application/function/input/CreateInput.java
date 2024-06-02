@@ -24,7 +24,12 @@ public class CreateInput {
     private PrizingModel prizingModel;
     private DeliveryMode deliveryMode;
     private LearningMode learningMode;
-    private String imageUrl;
+    private String coverImageUrl;
+    private boolean earnBadge;
+    private boolean earnCertification;
+    private int points;
+    private CourseType courseType;
+    private CourseLevel courseLevel;
     private int recommendations;
     private String publishedOn;
     private Promotion promotion;

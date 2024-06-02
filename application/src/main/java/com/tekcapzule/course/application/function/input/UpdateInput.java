@@ -26,10 +26,13 @@ public class UpdateInput {
     private PrizingModel prizingModel;
     private DeliveryMode deliveryMode;
     private LearningMode learningMode;
-    private String imageUrl;
-
+    private String coverImageUrl;
     private int recommendations;
-
+    private int points;
+    private int courseRating;
     private Promotion promotion;
-
+    private boolean earnBadge;
+    private boolean earnCertification;
+    private CourseType courseType;
+    private CourseLevel courseLevel;
 }
