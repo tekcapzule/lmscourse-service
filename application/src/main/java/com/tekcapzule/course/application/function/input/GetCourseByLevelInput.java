@@ -9,5 +9,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class GetCourseByLevelInput {
     private String topicCode;
-    private String level;
+    private String courseLevel;
 }

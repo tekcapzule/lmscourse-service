@@ -33,12 +33,12 @@ public class LMSCourse extends BaseDomainEntity implements AggregateRoot {
     private String author;
     @DynamoDBAttribute(attributeName = "publisher")
     private String publisher;
-    @DynamoDBAttribute(attributeName = "level")
+    @DynamoDBAttribute(attributeName = "courseLevel")
     @DynamoDBTypeConvertedEnum
-    private Level level;
-    @DynamoDBAttribute(attributeName = "type")
+    private CourseLevel courseLevel;
+    @DynamoDBAttribute(attributeName = "courseType")
     @DynamoDBTypeConvertedEnum
-    private Type type;
+    private CourseType courseType;
     @DynamoDBAttribute(attributeName = "duration")
     private String duration;
     @DynamoDBAttribute(attributeName = "resourceUrl")
@@ -67,10 +67,10 @@ public class LMSCourse extends BaseDomainEntity implements AggregateRoot {
     private int courseRating;
     @DynamoDBAttribute(attributeName = "points")
     private int points;
-    @DynamoDBAttribute(attributeName = "isEarnBadge")
+    @DynamoDBAttribute(attributeName = "earnBadge")
     @JsonProperty("earnBadge")
     private boolean earnBadge;
-    @DynamoDBAttribute(attributeName = "isEarnCertification")
+    @DynamoDBAttribute(attributeName = "earnCertification")
     @JsonProperty("earnCertification")
     private boolean earnCertification;
     @DynamoDBAttribute(attributeName = "publishedOn")

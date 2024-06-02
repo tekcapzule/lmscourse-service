@@ -35,7 +35,7 @@ public class UpdateCommand extends Command {
     private Promotion promotion;
     private String publishedOn;
     private boolean earnBadge;
-    private boolean earnCertificate;
-    private Type type;
-    private Level level;
+    private boolean earnCertification;
+    private CourseType courseType;
+    private CourseLevel courseLevel;
 }

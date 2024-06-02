@@ -29,11 +29,11 @@ public class CreateCommand extends Command {
     private LearningMode learningMode;
     private String coverImageUrl;
     private boolean earnBadge;
-    private boolean earnCertificate;
+    private boolean earnCertification;
     private int recommendations;
     private int points;
-    private Type type;
-    private Level level;
+    private CourseType courseType;
+    private CourseLevel courseLevel;
     private Promotion promotion;
     private String publishedOn;
 

@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @AllArgsConstructor
-public enum Level {
+public enum CourseLevel {
     BEGINNER("Beginner"),
     INTERMEDIATE("Intermediate"),
     ADVANCED("Proficient"),

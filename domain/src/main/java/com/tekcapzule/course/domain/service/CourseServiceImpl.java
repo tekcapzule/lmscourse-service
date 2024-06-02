@@ -44,9 +44,9 @@ public class CourseServiceImpl implements CourseService {
                 .points(createCommand.getPoints())
                 .promotion(createCommand.getPromotion())
                 .earnBadge(createCommand.isEarnBadge())
-                .earnCertification(createCommand.isEarnCertificate())
-                .type(createCommand.getType())
-                .level(createCommand.getLevel())
+                .earnCertification(createCommand.isEarnCertification())
+                .courseType(createCommand.getCourseType())
+                .courseLevel(createCommand.getCourseLevel())
                 .status(Status.SUBMITTED)
                 .recommendations(createCommand.getRecommendations())
                 .publishedOn(createCommand.getPublishedOn())
@@ -78,7 +78,7 @@ public class CourseServiceImpl implements CourseService {
             course.setDeliveryMode(updateCommand.getDeliveryMode());
             course.setLearningMode(updateCommand.getLearningMode());
             course.setEarnBadge(updateCommand.isEarnBadge());
-            course.setEarnCertification(updateCommand.isEarnCertificate());
+            course.setEarnCertification(updateCommand.isEarnCertification());
             course.setPromotion(updateCommand.getPromotion());
             course.setCoverImageUrl(updateCommand.getCoverImageUrl());
             course.setUpdatedOn(updateCommand.getExecOn());
@@ -87,8 +87,8 @@ public class CourseServiceImpl implements CourseService {
             course.setPublishedOn(updateCommand.getPublishedOn());
             course.setPoints(updateCommand.getPoints());
             course.setCourseRating(updateCommand.getCourseRating());
-            course.setType(updateCommand.getType());
-            course.setLevel(updateCommand.getLevel());
+            course.setCourseType(updateCommand.getCourseType());
+            course.setCourseLevel(updateCommand.getCourseLevel());
             courseDynamoRepository.save(course);
         }
     }

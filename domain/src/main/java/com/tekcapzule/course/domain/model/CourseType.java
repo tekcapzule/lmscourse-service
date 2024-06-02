@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @AllArgsConstructor
-public enum Type {
+public enum CourseType {
     VIDEO("Video"),
     AUDIO("Audio"),
     PDF("Pdf");

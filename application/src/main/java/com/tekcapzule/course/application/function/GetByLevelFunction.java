@@ -43,7 +43,7 @@ public class GetByLevelFunction implements Function<Message<GetCourseByLevelInpu
         try {
             GetCourseByLevelInput getInput = getInputMessage.getPayload();
             log.info(String.format("Entering get course by level Function -Topic Code:%s", getInput.getTopicCode()));
-            courses = courseService.findAllByLevel(getInput.getTopicCode(), getInput.getLevel());
+            courses = courseService.findAllByLevel(getInput.getTopicCode(), getInput.getCourseLevel());
             if (courses.isEmpty()) {
                 responseHeaders = HeaderUtil.populateResponseHeaders(responseHeaders, Stage.valueOf(stage), Outcome.NOT_FOUND);
             } else {
