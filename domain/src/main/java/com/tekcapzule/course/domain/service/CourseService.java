@@ -18,7 +18,7 @@ public interface CourseService {
 
     List<LMSCourse> findAllByTopicCode(String code);
     List<LMSCourse> findAllByDuration(String code, String duration);
-    List<LMSCourse> findAllByLevel(String code, String level);
+    List<LMSCourse> findAllByLevel(String code, String courseLevel);
     void recommend(RecommendCommand recommendCommand);
     void approve(ApproveCommand approveCommand);
 }

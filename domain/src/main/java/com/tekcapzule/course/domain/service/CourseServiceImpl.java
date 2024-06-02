@@ -170,11 +170,11 @@ public class CourseServiceImpl implements CourseService {
         return courseDynamoRepository.findAllByDuration(topicCode, duration);
     }
     @Override
-    public List<LMSCourse> findAllByLevel(String topicCode, String level) {
+    public List<LMSCourse> findAllByLevel(String topicCode, String courseLevel) {
 
         log.info(String.format("Entering findAllByLevel Course service - Module code:%s", topicCode));
 
-        return courseDynamoRepository.findAllByLevel(topicCode, level);
+        return courseDynamoRepository.findAllByLevel(topicCode, courseLevel);
     }
 
 

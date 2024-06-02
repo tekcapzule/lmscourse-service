@@ -63,7 +63,7 @@ Resources:
           AttributeType: S
         - AttributeName: recommendations
           AttributeType: N
-        - AttributeName: level
+        - AttributeName: courseLevel
           AttributeType: S
         - AttributeName: duration
           AttributeType: S
@@ -87,7 +87,7 @@ Resources:
             WriteCapacityUnits: 1
         - IndexName: levelGSI
           KeySchema:
-            - AttributeName: level
+            - AttributeName: courseLevel
               KeyType: HASH
             - AttributeName: topicCode
               KeyType: RANGE

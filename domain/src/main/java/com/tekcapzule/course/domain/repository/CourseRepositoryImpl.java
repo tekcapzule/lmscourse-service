@@ -73,20 +73,20 @@ public class CourseRepositoryImpl implements CourseDynamoRepository {
         return dynamo.query(LMSCourse.class, queryExpression);
     }
     @Override
-    public List<LMSCourse> findAllByLevel(String topicCode, String level) {
+    public List<LMSCourse> findAllByLevel(String topicCode, String courseLevel) {
 
         HashMap<String, AttributeValue> expAttributes = new HashMap<>();
-        expAttributes.put(":level", new AttributeValue().withS(level));
+        expAttributes.put(":courseLevel", new AttributeValue().withS(courseLevel));
         expAttributes.put(":topicCode", new AttributeValue().withS(topicCode));
 
         HashMap<String, String> expNames = new HashMap<>();
-        expNames.put("#level", "level");
+        expNames.put("#courseLevel", "courseLevel");
         expNames.put("#topicCode", "topicCode");
 
 
         DynamoDBQueryExpression<LMSCourse> queryExpression = new DynamoDBQueryExpression<LMSCourse>()
                 .withIndexName("levelGSI").withConsistentRead(false)
-                .withKeyConditionExpression("#level = :level and #topicCode = :topicCode")
+                .withKeyConditionExpression("#courseLevel = :courseLevel and #topicCode = :topicCode")
                 .withExpressionAttributeValues(expAttributes)
                 .withExpressionAttributeNames(expNames);
 
