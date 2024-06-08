@@ -177,6 +177,12 @@ public class CourseServiceImpl implements CourseService {
         return courseDynamoRepository.findAllByLevel(topicCode, courseLevel);
     }
 
+    @Override
+    public LMSCourse findByCourseId(String courseId) {
+        log.info(String.format("Entering findByCourseId course service - Course ID:%s", courseId));
+
+        return courseDynamoRepository.findBy(courseId);
+    }
 
 
 }

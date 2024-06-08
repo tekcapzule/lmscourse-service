@@ -247,6 +247,27 @@ Resources:
             RestApiId:
               Ref: LMSCourseApi
 
+  GetCourseByTopicFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub "${Stage}-LMSCourse-GetCourseByTopic"
+      SnapStart:
+        ApplyOn: PublishedVersions
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref LMSCourseTable
+      Environment:
+        Variables:
+          SPRING_CLOUD_FUNCTION_DEFINITION: getByTopicFunction
+      Events:
+        ApiEvent:
+          Type: Api
+          Properties:
+            Path: lmscourse/getByTopic
+            Method: post
+            RestApiId:
+              Ref: LMSCourseApi
+
   GetCourseByDurationFunction:
     Type: AWS::Serverless::Function
     Properties:

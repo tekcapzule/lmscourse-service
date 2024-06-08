@@ -4,7 +4,7 @@ import com.tekcapzule.core.utils.HeaderUtil;
 import com.tekcapzule.core.utils.Outcome;
 import com.tekcapzule.core.utils.Stage;
 import com.tekcapzule.course.application.config.AppConfig;
-import com.tekcapzule.course.application.function.input.GetInput;
+import com.tekcapzule.course.application.function.input.GetCourseByTopicInput;
 import com.tekcapzule.course.domain.model.LMSCourse;
 import com.tekcapzule.course.domain.service.CourseService;
 import lombok.extern.slf4j.Slf4j;
@@ -20,31 +20,31 @@ import java.util.function.Function;
 
 @Component
 @Slf4j
-public class GetFunction implements Function<Message<GetInput>, Message<LMSCourse>> {
+public class GetByTopicFunction implements Function<Message<GetCourseByTopicInput>, Message<List<LMSCourse>>> {
 
     private final CourseService courseService;
 
     private final AppConfig appConfig;
 
-    public GetFunction(final CourseService courseService, final AppConfig appConfig) {
+    public GetByTopicFunction(final CourseService courseService, final AppConfig appConfig) {
         this.courseService = courseService;
         this.appConfig = appConfig;
     }
 
 
     @Override
-    public Message<LMSCourse> apply(Message<GetInput> getInputMessage) {
+    public Message<List<LMSCourse>> apply(Message<GetCourseByTopicInput> getInputMessage) {
 
         Map<String, Object> responseHeaders = new HashMap<>();
-        LMSCourse course = null;
+        List<LMSCourse> courses = new ArrayList<>();
 
         String stage = appConfig.getStage().toUpperCase();
 
         try {
-            GetInput getInput = getInputMessage.getPayload();
-            log.info(String.format("Entering get course Function -Course Id:%s", getInput.getCourseId()));
-            course = courseService.findByCourseId(getInput.getCourseId());
-            if (course==null) {
+            GetCourseByTopicInput getInput = getInputMessage.getPayload();
+            log.info(String.format("Entering get course Function -Topic Code:%s", getInput.getTopicCode()));
+            courses = courseService.findAllByTopicCode(getInput.getTopicCode());
+            if (courses.isEmpty()) {
                 responseHeaders = HeaderUtil.populateResponseHeaders(responseHeaders, Stage.valueOf(stage), Outcome.NOT_FOUND);
             } else {
                 responseHeaders = HeaderUtil.populateResponseHeaders(responseHeaders, Stage.valueOf(stage), Outcome.SUCCESS);
@@ -53,6 +53,6 @@ public class GetFunction implements Function<Message<GetInput>, Message<LMSCours
             log.error(ex.getMessage());
             responseHeaders = HeaderUtil.populateResponseHeaders(responseHeaders, Stage.valueOf(stage), Outcome.ERROR);
         }
-        return new GenericMessage<>(course, responseHeaders);
+        return new GenericMessage<>(courses, responseHeaders);
     }
 }
