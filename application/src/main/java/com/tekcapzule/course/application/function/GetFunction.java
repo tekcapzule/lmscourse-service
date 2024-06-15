@@ -20,7 +20,7 @@ import java.util.function.Function;
 
 @Component
 @Slf4j
-public class GetFunction implements Function<Message<GetInput>, Message<LMSCourse>> {
+public class GetFunction implements Function<Message<GetInput>, Message<List<LMSCourse>>> {
 
     private final CourseService courseService;
 
@@ -33,17 +33,17 @@ public class GetFunction implements Function<Message<GetInput>, Message<LMSCours
 
 
     @Override
-    public Message<LMSCourse> apply(Message<GetInput> getInputMessage) {
+    public Message<List<LMSCourse>> apply(Message<GetInput> getInputMessage) {
 
         Map<String, Object> responseHeaders = new HashMap<>();
-        LMSCourse course = null;
+        List<LMSCourse> course = new ArrayList<>();
 
         String stage = appConfig.getStage().toUpperCase();
 
         try {
             GetInput getInput = getInputMessage.getPayload();
-            log.info(String.format("Entering get course Function -Course Id:%s", getInput.getCourseId()));
-            course = courseService.findByCourseId(getInput.getCourseId());
+            log.info(String.format("Entering get course Function -Course Id:%s", getInput.getCourseIds().get(0)));
+            course = courseService.findByCourseId(getInput.getCourseIds());
             if (course==null) {
                 responseHeaders = HeaderUtil.populateResponseHeaders(responseHeaders, Stage.valueOf(stage), Outcome.NOT_FOUND);
             } else {

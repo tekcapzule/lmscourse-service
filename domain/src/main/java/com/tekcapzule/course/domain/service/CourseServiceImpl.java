@@ -10,6 +10,8 @@ import com.tekcapzule.course.domain.repository.CourseDynamoRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
@@ -178,10 +180,13 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
-    public LMSCourse findByCourseId(String courseId) {
-        log.info(String.format("Entering findByCourseId course service - Course ID:%s", courseId));
-
-        return courseDynamoRepository.findBy(courseId);
+    public List<LMSCourse> findByCourseId(List<String> courseIds) {
+        log.info(String.format("Entering findByCourseId course service - Course ID:%s", courseIds.get(0)));
+        List<LMSCourse> lmsCourses = new ArrayList();
+        for(String courseId:courseIds) {
+           lmsCourses.add(courseDynamoRepository.findBy(courseId));
+        }
+        return lmsCourses;
     }
 
 
