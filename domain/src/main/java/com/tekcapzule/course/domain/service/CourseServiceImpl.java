@@ -171,22 +171,17 @@ public class CourseServiceImpl implements CourseService {
                         feedbackList.add(QuizResult.AnswersFeedback.builder().questionId(userAnswer.getQuestionId())
                                 .correctAnswers(question.getCorrectAnswer()).selectedAnswers(userAnswer.getSelectedAnswers())
                                 .build());
-                        isPassed = (score/quiz.getQuestions().size()*100)>50;
+                        isPassed = (score/quiz.getQuestions().size()*100)>70;
 
                     }
-
                     return new QuizResult(score,isPassed, feedbackList);
-
                 }
-                }
-
-
+            }
         } catch(Exception e) {
             e.printStackTrace();
             log.error(e.getMessage());
         }
         return result;
-
     }
 
    /* @Override
