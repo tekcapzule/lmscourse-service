@@ -3,14 +3,8 @@ package com.tekcapzule.course.application.mapper;
 import com.tekcapzule.core.domain.Command;
 import com.tekcapzule.core.domain.ExecBy;
 import com.tekcapzule.core.domain.Origin;
-import com.tekcapzule.course.application.function.input.ApproveCourseInput;
-import com.tekcapzule.course.application.function.input.CreateInput;
-import com.tekcapzule.course.application.function.input.RecommendInput;
-import com.tekcapzule.course.application.function.input.UpdateInput;
-import com.tekcapzule.course.domain.command.ApproveCommand;
-import com.tekcapzule.course.domain.command.CreateCommand;
-import com.tekcapzule.course.domain.command.RecommendCommand;
-import com.tekcapzule.course.domain.command.UpdateCommand;
+import com.tekcapzule.course.application.function.input.*;
+import com.tekcapzule.course.domain.command.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 
@@ -20,6 +14,7 @@ import java.util.function.BiFunction;
 
 @Slf4j
 public final class InputOutputMapper {
+
     private InputOutputMapper() {
 
     }
@@ -37,6 +32,22 @@ public final class InputOutputMapper {
         BeanUtils.copyProperties(createInput, createCommand);
         addOrigin.apply(createCommand, origin);
         return createCommand;
+    };
+
+    public static final BiFunction<CreateQuizInput, Origin, CreateQuizCommand> buildCreateCommandFromCreateQuizInput =
+             (createQuizInput, origin) -> {
+        CreateQuizCommand createQuizCommand =  CreateQuizCommand.builder().build();
+        BeanUtils.copyProperties(createQuizInput, createQuizCommand);
+        addOrigin.apply(createQuizCommand, origin);
+        return createQuizCommand;
+    };
+
+    public static final BiFunction<QuizSubmissionInput, Origin, QuizSubmitCommand> buildCreateCommandFromSubmitQuizInput =
+            (submissionInput, origin) -> {
+                QuizSubmitCommand submitCommand =  QuizSubmitCommand.builder().build();
+                BeanUtils.copyProperties(submissionInput, submitCommand);
+                addOrigin.apply(submitCommand, origin);
+                return submitCommand;
     };
 
     public static final BiFunction<UpdateInput, Origin, UpdateCommand> buildUpdateCommandFromUpdateInput = (updateInput, origin) -> {

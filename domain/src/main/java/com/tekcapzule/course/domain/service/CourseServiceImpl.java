@@ -1,11 +1,7 @@
 package com.tekcapzule.course.domain.service;
 
-import com.tekcapzule.course.domain.command.ApproveCommand;
-import com.tekcapzule.course.domain.command.CreateCommand;
-import com.tekcapzule.course.domain.command.RecommendCommand;
-import com.tekcapzule.course.domain.command.UpdateCommand;
-import com.tekcapzule.course.domain.model.LMSCourse;
-import com.tekcapzule.course.domain.model.Status;
+import com.tekcapzule.course.domain.command.*;
+import com.tekcapzule.course.domain.model.*;
 import com.tekcapzule.course.domain.repository.CourseDynamoRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Slf4j
 @Service
@@ -56,6 +53,20 @@ public class CourseServiceImpl implements CourseService {
 
         course.setAddedOn(createCommand.getExecOn());
         course.setAddedBy(createCommand.getExecBy().getUserId());
+
+        courseDynamoRepository.save(course);
+    }
+
+    @Override
+    public void createQuiz(CreateQuizCommand createQuizCommand) {
+        log.info(String.format("Entering create quiz service - Course ID :%s", createQuizCommand.getCourseId()));
+        LMSCourse course = courseDynamoRepository.findBy(createQuizCommand.getCourseId());
+        String quizId = UUID.randomUUID().toString();
+        Quiz quiz = Quiz.builder().quizId(quizId).questions(createQuizCommand.getQuestions()).build();
+        course.setQuiz(quiz);
+
+        course.setAddedOn(createQuizCommand.getExecOn());
+        course.setAddedBy(createQuizCommand.getExecBy().getUserId());
 
         courseDynamoRepository.save(course);
     }
@@ -132,6 +143,50 @@ public class CourseServiceImpl implements CourseService {
 
             courseDynamoRepository.save(course);
         }
+    }
+
+    @Override
+    public QuizResult submit(QuizSubmitCommand quizSubmitCommand) {
+        log.info(String.format("Entering submit quiz service -  Course Id:%s", quizSubmitCommand.getCourseId()));
+        QuizResult result = new QuizResult();
+        int score = 0;
+        boolean isPassed = false;
+        try {
+            LMSCourse course = courseDynamoRepository.findBy(quizSubmitCommand.getCourseId());
+            if (course != null) {
+                Quiz quiz = course.getQuiz();
+                if(quiz != null) {
+                    List feedbackList = new ArrayList();
+                    for(QuizSubmitCommand.UserAnswer userAnswer:quizSubmitCommand.getUserAnswers()) {
+                        Question question = quiz.getQuestions().stream()
+                                .filter(q -> q.getQuestionId().equals(userAnswer.getQuestionId()))
+                                .findFirst()
+                                .orElseThrow(() -> new IllegalArgumentException("Question not found"));
+
+                        boolean isCorrect = question.getCorrectAnswer().equals(userAnswer.getSelectedAnswers());
+                        if (isCorrect) {
+                            score++;
+                        }
+
+                        feedbackList.add(QuizResult.AnswersFeedback.builder().questionId(userAnswer.getQuestionId())
+                                .correctAnswers(question.getCorrectAnswer()).selectedAnswers(userAnswer.getSelectedAnswers())
+                                .build());
+                        isPassed = (score/quiz.getQuestions().size()*100)>50;
+
+                    }
+
+                    return new QuizResult(score,isPassed, feedbackList);
+
+                }
+                }
+
+
+        } catch(Exception e) {
+            e.printStackTrace();
+            log.error(e.getMessage());
+        }
+        return result;
+
     }
 
    /* @Override

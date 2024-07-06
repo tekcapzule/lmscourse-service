@@ -310,6 +310,47 @@ Resources:
             RestApiId:
               Ref: LMSCourseApi
 
+  CreateCourseQuizFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub "${Stage}-LMSCourse-CreateQuiz"
+      SnapStart:
+        ApplyOn: PublishedVersions
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref LMSCourseTable
+      Environment:
+        Variables:
+          SPRING_CLOUD_FUNCTION_DEFINITION: createQuizFunction
+      Events:
+        ApiEvent:
+          Type: Api
+          Properties:
+            Path: lmscourse/createQuiz
+            Method: post
+            RestApiId:
+              Ref: LMSCourseApi
+
+  ValidateCourseQuizFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub "${Stage}-LMSCourse-ValidateQuiz"
+      SnapStart:
+        ApplyOn: PublishedVersions
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref LMSCourseTable
+      Environment:
+        Variables:
+          SPRING_CLOUD_FUNCTION_DEFINITION: validateQuizFunction
+      Events:
+        ApiEvent:
+          Type: Api
+          Properties:
+            Path: lmscourse/validateQuiz
+            Method: post
+            RestApiId:
+              Ref: LMSCourseApi
   # Set Output Variable
 
 Outputs:
