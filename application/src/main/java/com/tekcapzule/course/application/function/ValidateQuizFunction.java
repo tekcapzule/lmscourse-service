@@ -45,7 +45,6 @@ public class ValidateQuizFunction implements Function<Message<QuizSubmissionInpu
         try {
             QuizSubmissionInput quizSubmissionInput = quizSubmissionInputMessage.getPayload();
             log.info(String.format("Entering Validate quiz Function -  Course Id:%s", quizSubmissionInput.getCourseId()));
-            log.info(String.format("user answers from input", quizSubmissionInput.getUserAnswers().size()));
             Origin origin = HeaderUtil.buildOriginFromHeaders(quizSubmissionInputMessage.getHeaders());
             QuizSubmitCommand quizSubmitCommand = InputOutputMapper.buildCreateCommandFromSubmitQuizInput.apply(quizSubmissionInput, origin);
             if (quizSubmissionInput.getUserAnswers() != null) {

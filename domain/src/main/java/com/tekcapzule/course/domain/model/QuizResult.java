@@ -14,7 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class QuizResult {
-    private int score;
+    private Double scorePercentage;
     private boolean isPassed;
     private List<QuizResult.AnswersFeedback> feedbacks;
 

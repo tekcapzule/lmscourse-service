@@ -151,19 +151,15 @@ public class CourseServiceImpl implements CourseService {
         QuizResult result = new QuizResult();
         int score = 0;
         boolean isPassed = false;
+        double scorePercentage = 0;
         try {
             LMSCourse course = courseDynamoRepository.findBy(quizSubmitCommand.getCourseId());
             if (course != null) {
                 Quiz quiz = course.getQuiz();
                 if(quiz != null) {
-                    log.info("quiz is not null");
                     List feedbackList = new ArrayList();
                     log.info("user answers"+quizSubmitCommand.getUserAnswers());
                     for(QuizSubmitCommand.UserAnswer userAnswer:quizSubmitCommand.getUserAnswers()) {
-                        log.info("answers are there");
-                        log.info("questions"+quiz.getQuestions());
-                        log.info("Question Id"+ quiz.getQuestions().get(0).getQuestionId());
-                        log.info("Answer"+ quiz.getQuestions().get(0).getCorrectAnswer());
                         Question question = quiz.getQuestions().stream()
                                 .filter(q -> q.getQuestionId().equals(userAnswer.getQuestionId()))
                                 .findFirst()
@@ -177,10 +173,11 @@ public class CourseServiceImpl implements CourseService {
                         feedbackList.add(QuizResult.AnswersFeedback.builder().questionId(userAnswer.getQuestionId())
                                 .correctAnswers(question.getCorrectAnswer()).selectedAnswers(userAnswer.getSelectedAnswers())
                                 .build());
-                        isPassed = (score/quiz.getQuestions().size()*100)>70;
+                        scorePercentage = score/quiz.getQuestions().size()*100;
+                        isPassed = scorePercentage>70;
 
                     }
-                    return new QuizResult(score,isPassed, feedbackList);
+                    return new QuizResult(scorePercentage,isPassed, feedbackList);
                 }
             }
         } catch(Exception e) {
