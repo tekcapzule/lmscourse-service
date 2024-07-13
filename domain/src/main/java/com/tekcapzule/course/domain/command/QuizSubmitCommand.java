@@ -18,7 +18,7 @@ public class QuizSubmitCommand extends Command {
     private List<UserAnswer> userAnswers;
 
     @Data
-    public class UserAnswer {
+    public static class UserAnswer {
         private String questionId;
         private List<String> selectedAnswers;
     }
