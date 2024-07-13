@@ -19,6 +19,6 @@ public class QuizSubmissionInput {
 
     private class UserAnswer {
         private String questionId;
-        private String selectedAnswer;
+        private List<String> selectedAnswers;
     }
 }
