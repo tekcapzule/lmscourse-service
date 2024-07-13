@@ -173,10 +173,11 @@ public class CourseServiceImpl implements CourseService {
                         feedbackList.add(QuizResult.AnswersFeedback.builder().questionId(userAnswer.getQuestionId())
                                 .correctAnswers(question.getCorrectAnswer()).selectedAnswers(userAnswer.getSelectedAnswers())
                                 .build());
-                        scorePercentage = score/quiz.getQuestions().size()*100;
-                        isPassed = scorePercentage>70;
+
 
                     }
+                    scorePercentage = score/quiz.getQuestions().size()*100;
+                    isPassed = scorePercentage>70;
                     return new QuizResult(scorePercentage,isPassed, feedbackList);
                 }
             }
