@@ -158,6 +158,9 @@ public class CourseServiceImpl implements CourseService {
                 if(quiz != null) {
                     List feedbackList = new ArrayList();
                     for(QuizSubmitCommand.UserAnswer userAnswer:quizSubmitCommand.getUserAnswers()) {
+                        log.info("size"+quiz.getQuestions().size());
+                        log.info("Question Id"+ quiz.getQuestions().get(0).getQuestionId());
+                        log.info("Answer"+ quiz.getQuestions().get(0).getCorrectAnswer());
                         Question question = quiz.getQuestions().stream()
                                 .filter(q -> q.getQuestionId().equals(userAnswer.getQuestionId()))
                                 .findFirst()
