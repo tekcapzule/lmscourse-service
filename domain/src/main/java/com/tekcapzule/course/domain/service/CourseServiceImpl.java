@@ -156,9 +156,11 @@ public class CourseServiceImpl implements CourseService {
             if (course != null) {
                 Quiz quiz = course.getQuiz();
                 if(quiz != null) {
+                    log.info("quiz is not null");
                     List feedbackList = new ArrayList();
                     for(QuizSubmitCommand.UserAnswer userAnswer:quizSubmitCommand.getUserAnswers()) {
-                        log.info("size"+quiz.getQuestions().size());
+                        log.info("answers are there");
+                        log.info("questions"+quiz.getQuestions());
                         log.info("Question Id"+ quiz.getQuestions().get(0).getQuestionId());
                         log.info("Answer"+ quiz.getQuestions().get(0).getCorrectAnswer());
                         Question question = quiz.getQuestions().stream()
