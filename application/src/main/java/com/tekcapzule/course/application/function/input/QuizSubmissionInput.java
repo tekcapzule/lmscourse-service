@@ -17,7 +17,8 @@ public class QuizSubmissionInput {
     private String quizId;
     private List<UserAnswer> userAnswers;
 
-    private class UserAnswer {
+    @Data
+    public class UserAnswer {
         private String questionId;
         private List<String> selectedAnswers;
     }
