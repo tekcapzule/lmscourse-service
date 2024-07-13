@@ -167,7 +167,9 @@ public class CourseServiceImpl implements CourseService {
 
                         boolean isCorrect = question.getCorrectAnswer().equals(userAnswer.getSelectedAnswers());
                         if (isCorrect) {
+                            log.info("correct");
                             score++;
+                            log.info("score value"+score);
                         }
 
                         feedbackList.add(QuizResult.AnswersFeedback.builder().questionId(userAnswer.getQuestionId())
@@ -176,6 +178,7 @@ public class CourseServiceImpl implements CourseService {
 
 
                     }
+                    log.info("score value"+score);
                     scorePercentage = score/quiz.getQuestions().size()*100;
                     isPassed = scorePercentage>70;
                     return new QuizResult(scorePercentage,isPassed, feedbackList);
