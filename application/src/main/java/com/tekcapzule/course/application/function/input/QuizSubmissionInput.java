@@ -18,6 +18,8 @@ public class QuizSubmissionInput {
     private List<UserAnswer> userAnswers;
 
     @Data
+    @JsonIgnoreProperties(ignoreUnknown = true)
+    @NoArgsConstructor
     public static class UserAnswer {
         private String questionId;
         private List<String> selectedAnswers;
