@@ -16,8 +16,10 @@ import org.springframework.messaging.support.GenericMessage;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 
 @Component
@@ -43,9 +45,18 @@ public class ValidateQuizFunction implements Function<Message<QuizSubmissionInpu
         try {
             QuizSubmissionInput quizSubmissionInput = quizSubmissionInputMessage.getPayload();
             log.info(String.format("Entering Validate quiz Function -  Course Id:%s", quizSubmissionInput.getCourseId()));
-            log.info(String.format("user answers from input", quizSubmissionInput.getUserAnswers()));
+            log.info(String.format("user answers from input", quizSubmissionInput.getUserAnswers().size()));
             Origin origin = HeaderUtil.buildOriginFromHeaders(quizSubmissionInputMessage.getHeaders());
             QuizSubmitCommand quizSubmitCommand = InputOutputMapper.buildCreateCommandFromSubmitQuizInput.apply(quizSubmissionInput, origin);
+            if (quizSubmissionInput.getUserAnswers() != null) {
+                List<QuizSubmitCommand.UserAnswer> userAnswers = quizSubmissionInput.getUserAnswers().stream()
+                        .map(ua -> QuizSubmitCommand.UserAnswer.builder()
+                                .questionId(ua.getQuestionId())
+                                .selectedAnswers(ua.getSelectedAnswers())
+                                .build())
+                        .collect(Collectors.toList());
+                quizSubmitCommand.setUserAnswers(userAnswers);
+            }
             quizResult = courseService.submit(quizSubmitCommand);
             if (quizResult==null) {
                 responseHeaders = HeaderUtil.populateResponseHeaders(responseHeaders, Stage.valueOf(stage), Outcome.NOT_FOUND);
