@@ -18,6 +18,9 @@ public class QuizSubmitCommand extends Command {
     private List<UserAnswer> userAnswers;
 
     @Data
+    @JsonIgnoreProperties(ignoreUnknown = true)
+    @EqualsAndHashCode(callSuper = false)
+    @Builder
     public static class UserAnswer {
         private String questionId;
         private List<String> selectedAnswers;
