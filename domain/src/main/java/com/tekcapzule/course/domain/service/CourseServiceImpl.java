@@ -179,8 +179,10 @@ public class CourseServiceImpl implements CourseService {
 
                     }
                     log.info("score value"+score);
-                    scorePercentage = score/quiz.getQuestions().size()*100;
-                    isPassed = scorePercentage>70;
+                    log.info("size value"+quiz.getQuestions().size());
+                    scorePercentage = (score/quiz.getQuestions().size())*100;
+                    log.info("score percentage"+scorePercentage);
+                    isPassed = scorePercentage>50;
                     return new QuizResult(scorePercentage,isPassed, feedbackList);
                 }
             }
