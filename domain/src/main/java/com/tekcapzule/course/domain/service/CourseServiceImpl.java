@@ -180,7 +180,7 @@ public class CourseServiceImpl implements CourseService {
                     }
                     log.info("score value"+score);
                     log.info("size value"+quiz.getQuestions().size());
-                    scorePercentage = (score/quiz.getQuestions().size())*100;
+                    scorePercentage = (score / quiz.getQuestions().size()) * 100;
                     log.info("score percentage"+scorePercentage);
                     isPassed = scorePercentage>50;
                     return new QuizResult(scorePercentage,isPassed, feedbackList);
