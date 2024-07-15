@@ -2,12 +2,10 @@ package com.tekcapzule.course.domain.model;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBDocument;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.List;
 
@@ -22,7 +20,7 @@ public class Question {
     private String questionText;
     @DynamoDBAttribute(attributeName = "options")
     private List<Option> options;
-    @JsonIgnore
+    @Getter(onMethod_ = {@DynamoDBIgnore})
     private List<String> correctAnswer;
 
 }
