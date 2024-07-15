@@ -158,7 +158,6 @@ public class CourseServiceImpl implements CourseService {
                 Quiz quiz = course.getQuiz();
                 if(quiz != null) {
                     List feedbackList = new ArrayList();
-                    log.info("user answers"+quizSubmitCommand.getUserAnswers());
                     for(QuizSubmitCommand.UserAnswer userAnswer:quizSubmitCommand.getUserAnswers()) {
                         Question question = quiz.getQuestions().stream()
                                 .filter(q -> q.getQuestionId().equals(userAnswer.getQuestionId()))
@@ -167,9 +166,7 @@ public class CourseServiceImpl implements CourseService {
 
                         boolean isCorrect = question.getCorrectAnswer().equals(userAnswer.getSelectedAnswers());
                         if (isCorrect) {
-                            log.info("correct");
                             score++;
-                            log.info("score value"+score);
                         }
 
                         feedbackList.add(QuizResult.AnswersFeedback.builder().questionId(userAnswer.getQuestionId())

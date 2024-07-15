@@ -17,12 +17,8 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @DynamoDBDocument
-public class Question {
-    private String questionId;
-    private String questionText;
-    @DynamoDBAttribute(attributeName = "options")
-    private List<Option> options;
-    @JsonIgnore
-    private List<String> correctAnswer;
+public class Option {
+    private String id;
+    private String name;
 
 }
