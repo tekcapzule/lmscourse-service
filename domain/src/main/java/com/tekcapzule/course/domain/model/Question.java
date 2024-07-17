@@ -20,6 +20,7 @@ public class Question {
     private String questionText;
     @DynamoDBAttribute(attributeName = "options")
     private List<Option> options;
+    @Getter(onMethod_ = {@JsonIgnore})
     private List<String> correctAnswer;
 
 }
