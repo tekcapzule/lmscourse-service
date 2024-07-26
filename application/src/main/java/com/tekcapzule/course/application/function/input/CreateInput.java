@@ -33,5 +33,8 @@ public class CreateInput {
     private int recommendations;
     private String publishedOn;
     private Promotion promotion;
+    private List<Resource> resources;
+    private List<Announcement> announcements;
+    private Quiz assessment;
 
 }

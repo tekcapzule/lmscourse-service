@@ -35,4 +35,7 @@ public class UpdateInput {
     private boolean earnCertification;
     private CourseType courseType;
     private CourseLevel courseLevel;
+    private Quiz assessment;
+    private List<Resource> resources;
+    private List<Announcement> announcements;
 }
