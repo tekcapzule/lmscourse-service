@@ -49,6 +49,7 @@ public class CourseServiceImpl implements CourseService {
                 .status(Status.SUBMITTED)
                 .recommendations(createCommand.getRecommendations())
                 .publishedOn(createCommand.getPublishedOn())
+                .assessment(createCommand.getAssessment())
                 .resources(createCommand.getResources())
                 .announcements(createCommand.getAnnouncements())
                 .build();
@@ -160,7 +161,7 @@ public class CourseServiceImpl implements CourseService {
         try {
             LMSCourse course = courseDynamoRepository.findBy(quizSubmitCommand.getCourseId());
             if (course != null) {
-                Quiz quiz = course.getQuiz();
+                Quiz quiz = course.getAssessment();
                 if(quiz != null) {
                     List feedbackList = new ArrayList();
                     for(QuizSubmitCommand.UserAnswer userAnswer:quizSubmitCommand.getUserAnswers()) {

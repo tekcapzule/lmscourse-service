@@ -38,5 +38,6 @@ public class CreateCommand extends Command {
     private String publishedOn;
     private List<Resource> resources;
     private List<Announcement> announcements;
+    private Quiz assessment;
 
 }
