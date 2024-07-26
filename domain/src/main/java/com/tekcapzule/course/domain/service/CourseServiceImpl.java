@@ -60,6 +60,12 @@ public class CourseServiceImpl implements CourseService {
         courseDynamoRepository.save(course);
     }
 
+    private Quiz buildQuiz(Quiz assessment) {
+        String quizId = UUID.randomUUID().toString();
+        Quiz quiz = Quiz.builder().quizId(quizId).questions(assessment.getQuestions()).build();
+        return quiz;
+    }
+
     @Override
     public void createQuiz(CreateQuizCommand createQuizCommand) {
         log.info(String.format("Entering create quiz service - Course ID :%s", createQuizCommand.getCourseId()));

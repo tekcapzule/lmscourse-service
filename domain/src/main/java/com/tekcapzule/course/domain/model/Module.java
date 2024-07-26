@@ -21,6 +21,7 @@ public class Module {
     private String coverImageUrl;
     @DynamoDBAttribute(attributeName = "chapters")
     private List<Chapter> chapters;
+    @DynamoDBAttribute(attributeName = "quiz")
     private Quiz quiz;
 
 }
