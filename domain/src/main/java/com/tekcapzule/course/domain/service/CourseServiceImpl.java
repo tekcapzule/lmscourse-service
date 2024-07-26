@@ -78,30 +78,33 @@ public class CourseServiceImpl implements CourseService {
 
         LMSCourse course = courseDynamoRepository.findBy(updateCommand.getCourseId());
         if (course != null) {
-            course.setTitle(updateCommand.getTitle());
-            course.setTopicCode(updateCommand.getTopicCode());
-            course.setAuthor(updateCommand.getAuthor());
-            course.setPublisher(updateCommand.getPublisher());
-            course.setDuration(updateCommand.getDuration());
-            course.setResourceUrl(updateCommand.getResourceUrl());
-            course.setSummary(updateCommand.getSummary());
-            course.setDescription(updateCommand.getDescription());
-            course.setModules(updateCommand.getModules());
-            course.setPrizingModel(updateCommand.getPrizingModel());
-            course.setDeliveryMode(updateCommand.getDeliveryMode());
-            course.setLearningMode(updateCommand.getLearningMode());
+            course.setTitle(updateCommand.getTitle()!=null?updateCommand.getTitle():course.getTitle());
+            course.setTopicCode(updateCommand.getTopicCode()!=null?updateCommand.getTopicCode():course.getTopicCode());
+            course.setAuthor(updateCommand.getAuthor()!=null?updateCommand.getAuthor():course.getAuthor());
+            course.setPublisher(updateCommand.getPublisher()!=null?updateCommand.getPublisher():course.getPublisher());
+            course.setDuration(updateCommand.getDuration()!=null?updateCommand.getDuration():course.getDuration());
+            course.setResourceUrl(updateCommand.getResourceUrl()!=null?updateCommand.getResourceUrl():course.getResourceUrl());
+            course.setSummary(updateCommand.getPublisher()!=null?updateCommand.getSummary():course.getSummary());
+            course.setDescription(updateCommand.getDescription()!=null?updateCommand.getDescription():course.getDescription());
+            course.setModules(updateCommand.getModules()!=null?updateCommand.getModules():course.getModules());
+            course.setPrizingModel(updateCommand.getPrizingModel()!=null?updateCommand.getPrizingModel():course.getPrizingModel());
+            course.setDeliveryMode(updateCommand.getDeliveryMode()!=null?updateCommand.getDeliveryMode():course.getDeliveryMode());
+            course.setLearningMode(updateCommand.getLearningMode()!=null?updateCommand.getLearningMode():course.getLearningMode());
             course.setEarnBadge(updateCommand.isEarnBadge());
             course.setEarnCertification(updateCommand.isEarnCertification());
-            course.setPromotion(updateCommand.getPromotion());
-            course.setCoverImageUrl(updateCommand.getCoverImageUrl());
+            course.setPromotion(updateCommand.getPromotion()!=null?updateCommand.getPromotion():course.getPromotion());
+            course.setCoverImageUrl(updateCommand.getCoverImageUrl()!=null?updateCommand.getCoverImageUrl():course.getCoverImageUrl());
             course.setUpdatedOn(updateCommand.getExecOn());
             course.setUpdatedBy(updateCommand.getExecBy().getUserId());
             course.setRecommendations(updateCommand.getRecommendations());
-            course.setPublishedOn(updateCommand.getPublishedOn());
-            course.setPoints(updateCommand.getPoints());
-            course.setCourseRating(updateCommand.getCourseRating());
-            course.setCourseType(updateCommand.getCourseType());
-            course.setCourseLevel(updateCommand.getCourseLevel());
+            course.setPublishedOn(updateCommand.getPublishedOn()!=null?updateCommand.getPublishedOn():course.getPublishedOn());
+            course.setPoints(updateCommand.getPoints()!=0? updateCommand.getPoints() : course.getPoints());
+            course.setCourseRating(updateCommand.getCourseRating()!=0?updateCommand.getCourseRating(): course.getCourseRating());
+            course.setCourseType(updateCommand.getCourseType()!=null?updateCommand.getCourseType():course.getCourseType());
+            course.setCourseLevel(updateCommand.getCourseLevel()!=null?updateCommand.getCourseLevel():course.getCourseLevel());
+            course.setQuiz(updateCommand.getQuiz()!=null?updateCommand.getQuiz():course.getQuiz());
+            course.setResources(updateCommand.getResources()!=null?updateCommand.getResources():course.getResources());
+            course.setAnnouncements(updateCommand.getAnnouncements()!=null?updateCommand.getAnnouncements():course.getAnnouncements());
             courseDynamoRepository.save(course);
         }
     }

@@ -38,4 +38,7 @@ public class UpdateCommand extends Command {
     private boolean earnCertification;
     private CourseType courseType;
     private CourseLevel courseLevel;
+    private Quiz quiz;
+    private List<Resource> resources;
+    private List<Announcement> announcements;
 }

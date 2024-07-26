@@ -77,6 +77,9 @@ public class LMSCourse extends BaseDomainEntity implements AggregateRoot {
     private String publishedOn;
     @DynamoDBAttribute(attributeName = "quiz")
     private Quiz quiz;
-
+    @DynamoDBAttribute(attributeName = "resources")
+    private List<Resource> resources;
+    @DynamoDBAttribute(attributeName = "announcements")
+    private List<Announcement> announcements;
 }
 
