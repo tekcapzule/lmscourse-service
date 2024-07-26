@@ -36,5 +36,7 @@ public class CreateCommand extends Command {
     private CourseLevel courseLevel;
     private Promotion promotion;
     private String publishedOn;
+    private List<Resource> resources;
+    private List<Announcement> announcements;
 
 }

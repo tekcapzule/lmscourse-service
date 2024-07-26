@@ -49,6 +49,8 @@ public class CourseServiceImpl implements CourseService {
                 .status(Status.SUBMITTED)
                 .recommendations(createCommand.getRecommendations())
                 .publishedOn(createCommand.getPublishedOn())
+                .resources(createCommand.getResources())
+                .announcements(createCommand.getAnnouncements())
                 .build();
 
         course.setAddedOn(createCommand.getExecOn());
@@ -63,7 +65,7 @@ public class CourseServiceImpl implements CourseService {
         LMSCourse course = courseDynamoRepository.findBy(createQuizCommand.getCourseId());
         String quizId = UUID.randomUUID().toString();
         Quiz quiz = Quiz.builder().quizId(quizId).questions(createQuizCommand.getQuestions()).build();
-        course.setQuiz(quiz);
+        course.setAssessment(quiz);
 
         course.setAddedOn(createQuizCommand.getExecOn());
         course.setAddedBy(createQuizCommand.getExecBy().getUserId());
@@ -102,7 +104,7 @@ public class CourseServiceImpl implements CourseService {
             course.setCourseRating(updateCommand.getCourseRating()!=0?updateCommand.getCourseRating(): course.getCourseRating());
             course.setCourseType(updateCommand.getCourseType()!=null?updateCommand.getCourseType():course.getCourseType());
             course.setCourseLevel(updateCommand.getCourseLevel()!=null?updateCommand.getCourseLevel():course.getCourseLevel());
-            course.setQuiz(updateCommand.getQuiz()!=null?updateCommand.getQuiz():course.getQuiz());
+            course.setAssessment(updateCommand.getAssessment()!=null?updateCommand.getAssessment():course.getAssessment());
             course.setResources(updateCommand.getResources()!=null?updateCommand.getResources():course.getResources());
             course.setAnnouncements(updateCommand.getAnnouncements()!=null?updateCommand.getAnnouncements():course.getAnnouncements());
             courseDynamoRepository.save(course);
