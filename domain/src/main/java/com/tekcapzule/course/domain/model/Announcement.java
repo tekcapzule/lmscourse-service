@@ -17,4 +17,7 @@ public class Announcement {
     private String title;
     private String summary;
     private String imageUrl;
+    private String date;
+    private String author;
+
 }
