@@ -1,5 +1,6 @@
 package com.tekcapzule.course.application.function.input;
 
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.tekcapzule.course.domain.model.*;
 import com.tekcapzule.course.domain.model.Module;
@@ -36,5 +37,8 @@ public class CreateInput {
     private List<Resource> resources;
     private List<Announcement> announcements;
     private Quiz assessment;
-
+    private List<String> learningPoints;
+    private List<String> preRequisites;
+    private List<String> targetedAudiences;
+    private List<String> faqs;
 }
