@@ -37,7 +37,7 @@ public class CreateInput {
     private List<Resource> resources;
     private List<Announcement> announcements;
     private Quiz assessment;
-    private List<String> learningPoints;
+    private List<String> learningObjectives;
     private List<String> preRequisites;
     private List<String> targetedAudiences;
     private List<String> faqs;

@@ -52,7 +52,7 @@ public class CourseServiceImpl implements CourseService {
                 .assessment(createCommand.getAssessment())
                 .resources(createCommand.getResources())
                 .announcements(createCommand.getAnnouncements())
-                .learningPoints(createCommand.getLearningPoints())
+                .learningObjectives(createCommand.getLearningObjectives())
                 .preRequisites(createCommand.getPreRequisites())
                 .targetedAudiences(createCommand.getTargetedAudiences())
                 .faqs(createCommand.getFaqs())
@@ -118,7 +118,7 @@ public class CourseServiceImpl implements CourseService {
             course.setAssessment(updateCommand.getAssessment()!=null?updateCommand.getAssessment():course.getAssessment());
             course.setResources(updateCommand.getResources()!=null?updateCommand.getResources():course.getResources());
             course.setAnnouncements(updateCommand.getAnnouncements()!=null?updateCommand.getAnnouncements():course.getAnnouncements());
-            course.setLearningPoints(updateCommand.getLearningPoints()!=null?updateCommand.getLearningPoints():course.getLearningPoints());
+            course.setLearningObjectives(updateCommand.getLearningObjectives()!=null?updateCommand.getLearningObjectives():course.getLearningObjectives());
             course.setPreRequisites(updateCommand.getPreRequisites()!=null?updateCommand.getPreRequisites():course.getPreRequisites());
             course.setTargetedAudiences(updateCommand.getTargetedAudiences()!=null?updateCommand.getTargetedAudiences():course.getTargetedAudiences());
             course.setFaqs(updateCommand.getFaqs()!=null?updateCommand.getFaqs():course.getFaqs());

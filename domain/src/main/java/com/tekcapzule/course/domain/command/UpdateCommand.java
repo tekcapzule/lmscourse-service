@@ -41,7 +41,7 @@ public class UpdateCommand extends Command {
     private Quiz assessment;
     private List<Resource> resources;
     private List<Announcement> announcements;
-    private List<String> learningPoints;
+    private List<String> learningObjectives;
     private List<String> preRequisites;
     private List<String> targetedAudiences;
     private List<String> faqs;
