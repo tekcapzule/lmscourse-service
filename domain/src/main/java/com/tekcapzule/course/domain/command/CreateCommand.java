@@ -42,6 +42,6 @@ public class CreateCommand extends Command {
     private List<String> learningObjectives;
     private List<String> preRequisites;
     private List<String> targetedAudiences;
-    private List<String> faqs;
+    private List<Faq> faqs;
 
 }
