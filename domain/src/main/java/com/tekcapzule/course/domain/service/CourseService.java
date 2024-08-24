@@ -14,7 +14,7 @@ public interface CourseService {
     void update(UpdateCommand updateCommand);
     List<LMSCourse> findAll();
     List<LMSCourse> findAllByTopicCode(String code);
-    List<LMSCourse> findAllByDuration(String code, int duration);
+    List<LMSCourse> findAllByDuration(String code, String duration);
     List<LMSCourse> findAllByLevel(String code, String courseLevel);
     List<LMSCourse> findByCourseId(List<String> courseIds);
     void recommend(RecommendCommand recommendCommand);

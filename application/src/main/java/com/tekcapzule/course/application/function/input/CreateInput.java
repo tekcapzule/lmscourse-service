@@ -17,7 +17,7 @@ public class CreateInput {
     private String topicCode;
     private String author;
     private String publisher;
-    private int duration;
+    private String duration;
     private String resourceUrl;
     private String summary;
     private String description;

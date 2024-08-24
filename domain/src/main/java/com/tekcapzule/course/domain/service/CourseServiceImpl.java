@@ -95,7 +95,7 @@ public class CourseServiceImpl implements CourseService {
             course.setTopicCode(updateCommand.getTopicCode()!=null?updateCommand.getTopicCode():course.getTopicCode());
             course.setAuthor(updateCommand.getAuthor()!=null?updateCommand.getAuthor():course.getAuthor());
             course.setPublisher(updateCommand.getPublisher()!=null?updateCommand.getPublisher():course.getPublisher());
-            course.setDuration(updateCommand.getDuration()!=0?updateCommand.getDuration():course.getDuration());
+            course.setDuration(updateCommand.getDuration()!=null?updateCommand.getDuration():course.getDuration());
             course.setResourceUrl(updateCommand.getResourceUrl()!=null?updateCommand.getResourceUrl():course.getResourceUrl());
             course.setSummary(updateCommand.getPublisher()!=null?updateCommand.getSummary():course.getSummary());
             course.setDescription(updateCommand.getDescription()!=null?updateCommand.getDescription():course.getDescription());
@@ -241,7 +241,7 @@ public class CourseServiceImpl implements CourseService {
         return courseDynamoRepository.findAllByTopicCode(topicCode);
     }
     @Override
-    public List<LMSCourse> findAllByDuration(String topicCode, int duration) {
+    public List<LMSCourse> findAllByDuration(String topicCode, String duration) {
 
         log.info(String.format("Entering findAllByDuration Course service - Module code:%s", topicCode));
 

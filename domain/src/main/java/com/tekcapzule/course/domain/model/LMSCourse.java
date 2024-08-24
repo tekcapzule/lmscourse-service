@@ -40,7 +40,7 @@ public class LMSCourse extends BaseDomainEntity implements AggregateRoot {
     @DynamoDBTypeConvertedEnum
     private CourseType courseType;
     @DynamoDBAttribute(attributeName = "duration")
-    private int duration;
+    private String duration;
     @DynamoDBAttribute(attributeName = "resourceUrl")
     private String resourceUrl;
     @DynamoDBAttribute(attributeName = "coverImageUrl")
