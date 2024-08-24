@@ -17,7 +17,7 @@ public class UpdateInput {
     private String topicCode;
     private String author;
     private String publisher;
-    private String duration;
+    private int duration;
     private String resourceUrl;
     private String publishedOn;
     private String summary;

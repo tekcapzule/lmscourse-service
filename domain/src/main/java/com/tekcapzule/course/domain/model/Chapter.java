@@ -14,7 +14,7 @@ import lombok.*;
 @DynamoDBDocument
 public class Chapter {
     private int serialNumber;
-    private String duration;
+    private int duration;
     private String name;
     private String coverImageUrl;
     private String startDate;

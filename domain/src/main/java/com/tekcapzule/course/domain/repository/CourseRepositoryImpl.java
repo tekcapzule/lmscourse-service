@@ -53,11 +53,11 @@ public class CourseRepositoryImpl implements CourseDynamoRepository {
     }
 
     @Override
-    public List<LMSCourse> findAllByDuration(String topicCode, String duration) {
+    public List<LMSCourse> findAllByDuration(String topicCode, int duration) {
 
         HashMap<String, AttributeValue> expAttributes = new HashMap<>();
         expAttributes.put(":topicCode", new AttributeValue().withS(topicCode));
-        expAttributes.put(":duration", new AttributeValue().withS(duration));
+        expAttributes.put(":duration", new AttributeValue().withN(String.valueOf(duration)));
 
         HashMap<String, String> expNames = new HashMap<>();
         expNames.put("#duration", "duration");

@@ -20,7 +20,7 @@ public class UpdateCommand extends Command {
     private String topicCode;
     private String author;
     private String publisher;
-    private String duration;
+    private int duration;
     private String resourceUrl;
     private String summary;
     private String description;

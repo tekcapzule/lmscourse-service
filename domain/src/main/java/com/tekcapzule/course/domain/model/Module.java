@@ -16,7 +16,7 @@ import java.util.List;
 @DynamoDBDocument
 public class Module {
     private int serialNumber;
-    private String duration;
+    private int duration;
     private String name;
     private String coverImageUrl;
     @DynamoDBAttribute(attributeName = "chapters")

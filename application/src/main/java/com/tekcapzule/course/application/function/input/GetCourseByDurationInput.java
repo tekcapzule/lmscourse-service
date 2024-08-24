@@ -8,6 +8,6 @@ import lombok.NoArgsConstructor;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @NoArgsConstructor
 public class GetCourseByDurationInput {
-    private String duration;
+    private int duration;
     private String topicCode;
 }
