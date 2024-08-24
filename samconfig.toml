@@ -2,7 +2,7 @@ version = 0.1
 [dev]
 [dev.deploy]
 [dev.deploy.parameters]
-stack_name = "lmscourse-service"
+stack_name = "dev-lmscourse-service"
 s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-bh548n5auhy3"
 s3_prefix = "lmscourse-service"
 region = "us-east-1"
