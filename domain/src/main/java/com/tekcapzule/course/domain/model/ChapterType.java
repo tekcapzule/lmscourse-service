@@ -5,11 +5,10 @@ import lombok.Getter;
 
 @AllArgsConstructor
 public enum ChapterType {
-    CONTENT("Video"),
-    QUIZ("Audio"),
-    ASSIGNMENT("Pdf"),
-    LAB("lab");
-
-    @Getter
-    private String value;
+    VIDEO_CONTENT,
+    AUDIO_CONTENT,
+    PDF_CONTENT,
+    QUIZ,
+    ASSIGNMENT,
+    LAB;
 }
