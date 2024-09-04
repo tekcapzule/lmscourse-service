@@ -14,6 +14,7 @@ public interface CourseService {
     void update(UpdateCommand updateCommand);
     List<LMSCourse> findAll();
     List<LMSCourse> findAllByTopicCode(String code);
+    List<LMSCourse> findAllByStatus(String status);
     List<LMSCourse> findAllByDuration(String code, String duration);
     List<LMSCourse> findAllByLevel(String code, String courseLevel);
     List<LMSCourse> findByCourseId(List<String> courseIds);
