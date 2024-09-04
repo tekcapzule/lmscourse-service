@@ -53,6 +53,26 @@ public class CourseRepositoryImpl implements CourseDynamoRepository {
     }
 
     @Override
+    public List<LMSCourse> findAllByStatus(String status) {
+
+        HashMap<String, AttributeValue> expAttributes = new HashMap<>();
+        expAttributes.put(":status", new AttributeValue().withS(status));
+
+        HashMap<String, String> expNames = new HashMap<>();
+        expNames.put("#status", "status");
+
+
+        DynamoDBQueryExpression<LMSCourse> queryExpression = new DynamoDBQueryExpression<LMSCourse>()
+                .withIndexName("statusGSI").withConsistentRead(false)
+                .withKeyConditionExpression("#status = :status")
+                .withExpressionAttributeValues(expAttributes)
+                .withExpressionAttributeNames(expNames);
+
+        return dynamo.query(LMSCourse.class, queryExpression);
+
+    }
+    
+    @Override
     public List<LMSCourse> findAllByDuration(String topicCode, String duration) {
 
         HashMap<String, AttributeValue> expAttributes = new HashMap<>();

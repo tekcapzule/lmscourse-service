@@ -240,6 +240,15 @@ public class CourseServiceImpl implements CourseService {
 
         return courseDynamoRepository.findAllByTopicCode(topicCode);
     }
+    
+    @Override
+    public List<LMSCourse> findAllByStatus(String status) {
+
+        log.info(String.format("Entering findAllByStatus Course service - Status:%s", status));
+
+        return courseDynamoRepository.findAllByStatus(status);
+    }
+    
     @Override
     public List<LMSCourse> findAllByDuration(String topicCode, String duration) {
 

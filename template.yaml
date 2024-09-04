@@ -85,6 +85,15 @@ Resources:
           ProvisionedThroughput:
             ReadCapacityUnits: 1
             WriteCapacityUnits: 1
+        - IndexName: statusGSI
+          KeySchema:
+            - AttributeName: status
+              KeyType: HASH
+          Projection:
+            ProjectionType: ALL
+          ProvisionedThroughput:
+            ReadCapacityUnits: 1
+            WriteCapacityUnits: 1
         - IndexName: levelGSI
           KeySchema:
             - AttributeName: courseLevel
@@ -267,6 +276,29 @@ Resources:
             Method: post
             RestApiId:
               Ref: LMSCourseApi
+
+
+  GetCourseByStatusFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub "${Stage}-LMSCourse-GetCourseByStatus"
+      SnapStart:
+        ApplyOn: PublishedVersions
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref LMSCourseTable
+      Environment:
+        Variables:
+          SPRING_CLOUD_FUNCTION_DEFINITION: getByStatusFunction
+      Events:
+        ApiEvent:
+          Type: Api
+          Properties:
+            Path: lmscourse/getByStatus
+            Method: post
+            RestApiId:
+              Ref: LMSCourseApi
+
 
   GetCourseByDurationFunction:
     Type: AWS::Serverless::Function
